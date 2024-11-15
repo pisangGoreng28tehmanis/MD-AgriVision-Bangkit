@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.home.HomeFragment">
+
+
+    <TextView
+        android:id="@+id/tv_welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:fontFamily="sans-serif"
+        android:text="Welcome To AgriVision"
+        android:textSize="24sp"
+        android:textColor="@color/md_theme_inverseSurface_highContrast"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_cuaca"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="sans-serif"
+        android:text="Prakiraan cuaca"
+        android:textSize="16sp"
+        android:textColor="@color/md_theme_inverseSurface_highContrast"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_welcome" />
+
+    <FrameLayout
+        android:id="@+id/fl_cuaca"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_cuaca">
+
+        <ImageButton
+            android:id="@+id/btn_cuaca"
+            android:layout_width="340dp"
+            android:layout_height="130dp"
+            android:background="@drawable/cuaca_background"
+            android:padding="10dp"
+            android:src="@drawable/ic_home_black_24dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="45dp"
+            android:text="Kalkulator Pupuk"
+
+            android:textColor="@color/md_theme_inverseOnSurface_highContrast" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/fl_chat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toStartOf="@id/fl_pupuk"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fl_cuaca">
+
+        <ImageButton
+            android:id="@+id/btn_chat"
+            android:layout_width="168dp"
+            android:layout_height="128dp"
+            android:background="@drawable/button_background"
+            android:padding="10dp"
+            android:src="@drawable/ic_home_black_24dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="45dp"
+            android:text="Kalkulator Pupuk"
+
+            android:textColor="@color/md_theme_inverseSurface_highContrast" /> />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/fl_pupuk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/fl_chat"
+        app:layout_constraintTop_toBottomOf="@+id/fl_cuaca">
+
+        <ImageButton
+            android:id="@+id/btn_pupuk"
+            android:layout_width="168dp"
+            android:layout_height="128dp"
+            android:background="@drawable/button_background"
+            android:padding="10dp"
+            android:src="@drawable/ic_home_black_24dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="45dp"
+            android:text="Kalkulator Pupuk"
+
+            android:textColor="@color/md_theme_inverseSurface_highContrast" /> />
+    </FrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
