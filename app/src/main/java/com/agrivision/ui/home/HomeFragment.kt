@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import com.agrivision.R
 import com.agrivision.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
@@ -15,6 +17,7 @@ class HomeFragment : Fragment() {
 
     // This property is only valid between onCreateView and
     // onDestroyView.
+
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -31,6 +34,9 @@ class HomeFragment : Fragment() {
 //        val textView: TextView = binding.textHome
         homeViewModel.text.observe(viewLifecycleOwner) {
 //            textView.text = it
+        }
+        binding.btnPupuk.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_formFertilizerFragment)
         }
         return root
     }
