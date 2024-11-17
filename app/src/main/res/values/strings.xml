@@ -10,4 +10,22 @@
     <string name="labelkalium">Kandungan Kalium\n</string>
     <string name="labeltemp">Temperature\n</string>
     <string name="labelkelembapan">Kelembapan</string>
+    <string name="labeltanah">Jenis Tanah\n</string>
+    <string name="desc_input_jenis_tanah">Input Jenis Tanah\n</string>
+    <string name="select_option">Jenis Tanah</string>
+    <string-array name="simple_items">
+        <item>Tanah Hitam</item>
+        <item>Tanah Merah</item>
+        <item>Tanah Ungu</item>
+        <item>Tanah Kuning</item>
+        <item>Tanah Pink</item>
+    </string-array>
+    <string name="select_plant">Jenis Tanaman</string>
+    <string-array name="plant_type">
+        <item>Padi</item>
+        <item>Tomat</item>
+        <item>Cabai</item>
+        <item>Jagung</item>
+        <item>Strawberry</item>
+    </string-array>
 </resources>
