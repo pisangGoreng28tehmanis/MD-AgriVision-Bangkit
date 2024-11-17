@@ -21,6 +21,7 @@
         <item>Tanah Pink</item>
     </string-array>
     <string name="select_plant">Jenis Tanaman</string>
+
     <string-array name="plant_type">
         <item>Padi</item>
         <item>Tomat</item>
@@ -28,4 +29,16 @@
         <item>Jagung</item>
         <item>Strawberry</item>
     </string-array>
+
+    <!-- Fix: Correct placement of these arrays outside of a nested <resources> tag -->
+    <string-array name="data_name">
+        <item>Harley Quinn</item>
+    </string-array>
+    <string-array name="data_description">
+        <item>Harley Quinn | Joker Girlfriend</item>
+    </string-array>
+    <integer-array name="data_photo">
+        <item>@drawable/image1</item>
+    </integer-array>
+
 </resources>
