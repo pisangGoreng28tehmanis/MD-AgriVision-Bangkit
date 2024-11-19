@@ -1,5 +1,6 @@
 package com.agrivision.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.agrivision.R
 import com.agrivision.databinding.FragmentHomeBinding
+import com.agrivision.ui.FormFertilizerActivity
 
 class HomeFragment : Fragment() {
 
@@ -36,7 +38,8 @@ class HomeFragment : Fragment() {
 //            textView.text = it
         }
         binding.btnPupuk.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_formFertilizerFragment)
+            val Intent = Intent(requireActivity(), FormFertilizerActivity::class.java)
+            startActivity(Intent)
         }
         return root
     }
