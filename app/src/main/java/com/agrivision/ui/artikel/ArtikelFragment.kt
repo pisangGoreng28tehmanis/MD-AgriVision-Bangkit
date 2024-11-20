@@ -1,5 +1,6 @@
 package com.agrivision.ui.artikel
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.agrivision.R
 import com.agrivision.data.News
 import com.agrivision.databinding.FragmentArtikelBinding
+import com.agrivision.ui.detail.DetailActivity
 
 class ArtikelFragment : Fragment() {
 
@@ -54,9 +56,20 @@ class ArtikelFragment : Fragment() {
     private fun showRecyclerList() {
         val list = getListHeroes()  // Get the list of heroes
         rvNews.layoutManager = LinearLayoutManager(context)
-        val listHeroAdapter = ListNewsAdapter(list)
-        rvNews.adapter = listHeroAdapter
+        val listNewsAdapter = ListNewsAdapter(list)
+        rvNews.adapter = listNewsAdapter
+
+        // Handle item click
+        listNewsAdapter.onItemClick = { news ->
+            val intent = Intent(context, DetailActivity::class.java).apply {
+                putExtra("EXTRA_NAME", news.name)
+                putExtra("EXTRA_DESCRIPTION", news.description)
+                putExtra("EXTRA_PHOTO", news.photo)
+            }
+            startActivity(intent)
+        }
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

@@ -11,6 +11,8 @@ import com.agrivision.data.News
 
 class ListNewsAdapter(private val listNews: ArrayList<News>) : RecyclerView.Adapter<ListNewsAdapter.ListViewHolder>() {
 
+    var onItemClick: ((News) -> Unit)? = null
+
     // ViewHolder class to hold views for reuse
     class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imgPhoto: ImageView = itemView.findViewById(R.id.img_item_photo)
@@ -30,5 +32,10 @@ class ListNewsAdapter(private val listNews: ArrayList<News>) : RecyclerView.Adap
         holder.imgPhoto.setImageResource(photo)
         holder.tvName.text = name
         holder.tvDescription.text = description
+
+        // Handle item click
+        holder.itemView.setOnClickListener {
+            onItemClick?.invoke(listNews[position])
+        }
     }
 }
