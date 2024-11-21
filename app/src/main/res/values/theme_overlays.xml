@@ -94,5 +94,9 @@
         <item name="colorSurfaceContainer">@color/md_theme_surfaceContainer_highContrast</item>
         <item name="colorSurfaceContainerHigh">@color/md_theme_surfaceContainerHigh_highContrast</item>
         <item name="colorSurfaceContainerHighest">@color/md_theme_surfaceContainerHighest_highContrast</item>
+        <item name="android:fontFamily">@font/dm_sans</item>
+        <item name="android:textColorHint">@color/md_theme_inverseSurface_highContrast</item>
+        <item name="android:editTextColor">@color/md_theme_inverseSurface_highContrast</item>
+
     </style>
 </resources>

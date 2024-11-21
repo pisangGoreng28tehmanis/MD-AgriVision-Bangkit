@@ -13,6 +13,7 @@ import com.agrivision.R
 import com.agrivision.data.News
 import com.agrivision.databinding.FragmentArtikelBinding
 import com.agrivision.ui.detail.DetailActivity
+import com.google.android.material.search.SearchBar
 
 class ArtikelFragment : Fragment() {
 
@@ -53,7 +54,7 @@ class ArtikelFragment : Fragment() {
         return listHero
     }
 
-    private fun showRecyclerList() {
+    fun showRecyclerList() {
         val list = getListHeroes()  // Get the list of heroes
         rvNews.layoutManager = LinearLayoutManager(context)
         val listNewsAdapter = ListNewsAdapter(list)
