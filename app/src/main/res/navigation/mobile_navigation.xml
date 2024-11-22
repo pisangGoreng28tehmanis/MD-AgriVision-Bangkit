@@ -10,10 +10,6 @@
         android:name="com.agrivision.ui.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home">
-        <action
-            android:id="@+id/action_homeFragment_to_formFertilizerFragment"
-            app:destination="@+id/formFertilizerFragment"
-            />
     </fragment>
 
 

@@ -41,6 +41,39 @@ class RiwayatFragment : Fragment() {
                 gambarPupuk = R.drawable.ic_fertilizer_placeholder
             ),
             Riwayat(
+                tanggal = "01-01-2024",
+                namaTanaman = "Padi",
+                nitrogen = "2%",
+                fosfor = "1%",
+                kalium = "1.5%",
+                temperatur = "25°C",
+                kelembapan = "60%",
+                rekomendasiPupuk = "Urea",
+                gambarPupuk = R.drawable.ic_fertilizer_placeholder
+            ), Riwayat(
+                tanggal = "01-01-2024",
+                namaTanaman = "Padi",
+                nitrogen = "2%",
+                fosfor = "1%",
+                kalium = "1.5%",
+                temperatur = "25°C",
+                kelembapan = "60%",
+                rekomendasiPupuk = "Urea",
+                gambarPupuk = R.drawable.ic_fertilizer_placeholder
+            ), Riwayat(
+                tanggal = "01-01-2024",
+                namaTanaman = "Padi",
+                nitrogen = "2%",
+                fosfor = "1%",
+                kalium = "1.5%",
+                temperatur = "25°C",
+                kelembapan = "60%",
+                rekomendasiPupuk = "Urea",
+                gambarPupuk = R.drawable.ic_fertilizer_placeholder
+            ),
+
+
+            Riwayat(
                 tanggal = "02-01-2024",
                 namaTanaman = "Jagung",
                 nitrogen = "3%",

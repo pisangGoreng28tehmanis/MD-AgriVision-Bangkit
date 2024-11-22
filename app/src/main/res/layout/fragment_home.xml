@@ -11,10 +11,11 @@
         android:id="@+id/tv_welcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="40dp"
         android:text="Welcome To AgriVision"
         android:textColor="@color/md_theme_inverseSurface_highContrast"
         android:textSize="24sp"
+        android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,7 +25,7 @@
         android:id="@+id/tv_cuaca"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:text="Prakiraan cuaca"
         android:textColor="@color/md_theme_inverseSurface_highContrast"
         android:textSize="16sp"
@@ -64,23 +65,23 @@
     </FrameLayout>
 
     <FrameLayout
-        android:id="@+id/fl_chat"
+        android:id="@+id/fl_pupuk"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
-        app:layout_constraintEnd_toStartOf="@id/fl_pupuk"
+        app:layout_constraintEnd_toStartOf="@id/fl_chat"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fl_cuaca">
 
         <ImageButton
-            android:id="@+id/btn_chat"
+            android:id="@+id/btn_pupuk"
             android:layout_width="168dp"
             android:layout_height="128dp"
             android:background="@drawable/button_background"
             android:padding="10dp"
-            android:src="@drawable/ic_home_black_24dp" />
+            android:src="@drawable/ic_search" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -94,30 +95,30 @@
     </FrameLayout>
 
     <FrameLayout
-        android:id="@+id/fl_pupuk"
+        android:id="@+id/fl_chat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/fl_chat"
+        app:layout_constraintStart_toEndOf="@+id/fl_pupuk"
         app:layout_constraintTop_toBottomOf="@+id/fl_cuaca">
 
         <ImageButton
-            android:id="@+id/btn_pupuk"
+            android:id="@+id/btn_chat"
             android:layout_width="168dp"
             android:layout_height="128dp"
             android:background="@drawable/button_background"
             android:padding="10dp"
-            android:src="@drawable/ic_home_black_24dp" />
+            android:src="@drawable/ic_chat" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="45dp"
-            android:text="Kalkulator Pupuk"
+            android:text="Tanya bot kami"
 
             android:textColor="@color/md_theme_inverseSurface_highContrast" />
         />
@@ -130,8 +131,8 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="15dp"
         android:text="Tips &amp; Trik"
-        android:textSize="13sp"
         android:textColor="@color/md_theme_inverseSurface_highContrast"
+        android:textSize="13sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fl_chat" />
 
@@ -142,13 +143,14 @@
         android:layout_marginTop="15dp"
         android:layout_marginEnd="30dp"
         android:text="Lihat Lebih Banyak"
-        android:textSize="13sp"
         android:textColor="@color/md_theme_inverseSurface_highContrast"
+        android:textSize="13sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fl_pupuk" />
 
-    <ScrollView
-        android:layout_width="match_parent"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvTrick"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
@@ -157,18 +159,6 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_trik"
-        app:layout_constraintVertical_bias="0.025">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvTrick"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-        </LinearLayout>
-    </ScrollView>
+        app:layout_constraintVertical_bias="0.025" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
