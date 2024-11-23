@@ -40,6 +40,11 @@ android {
 }
 
 dependencies {
+    implementation(libs.glide)
+    implementation ("androidx.recyclerview:recyclerview:1.3.0")
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+    implementation(libs.logging.interceptor)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)

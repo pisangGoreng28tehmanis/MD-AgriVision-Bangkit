@@ -21,6 +21,7 @@
         <item>Tanah Pink</item>
     </string-array>
     <string name="select_plant">Jenis Tanaman</string>
+    <string name="weather_icon">WeatherAPi\n</string>
 
     <string-array name="plant_type">
         <item>Padi</item>

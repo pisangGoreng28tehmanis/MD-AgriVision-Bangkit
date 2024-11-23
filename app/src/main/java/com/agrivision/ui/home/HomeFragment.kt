@@ -18,6 +18,7 @@ import com.agrivision.ui.FormFertilizerActivity
 import com.agrivision.ui.artikel.ArtikelFragment
 import com.agrivision.ui.artikel.ListNewsAdapter
 import com.agrivision.ui.detail.DetailActivity
+import com.agrivision.ui.weather.WeatherActivity
 
 class HomeFragment : Fragment() {
 
@@ -51,7 +52,12 @@ class HomeFragment : Fragment() {
             val Intent = Intent(requireActivity(), FormFertilizerActivity::class.java)
             startActivity(Intent)
         }
+        binding.btnCuaca.setOnClickListener {
+            val intent = Intent(requireActivity(), WeatherActivity::class.java)
+            startActivity(intent)
+        }
         showRecyclerList()
+
         return root
     }
     private fun getListTrick(): ArrayList<News> {
