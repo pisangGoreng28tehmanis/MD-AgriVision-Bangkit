@@ -13,7 +13,7 @@ class ApiConfig {
                 .addInterceptor(loggingInterceptor)
                 .build()
             val retrofit = Retrofit.Builder()
-                .baseUrl("https://api.bmkg.go.id/") // Base URL API BMKG (diubah ke root URL)
+                .baseUrl("https://weather-api-59998104202.asia-southeast2.run.app") // Base URL API BMKG (diubah ke root URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build()

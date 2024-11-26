@@ -1,22 +1,22 @@
 package com.agrivision.data.retrofit
 
-import com.agrivision.data.response.ResponseWeather
+import com.agrivision.data.response.ResponseCCWeather
 import retrofit2.Call
 import retrofit2.http.GET
-import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ApiService {
 
     /**
-     * Mendapatkan data prakiraan cuaca seluruh kelurahan/desa di Indonesia.
+     * Mendapatkan data prakiraan cuaca berdasarkan latitude dan longitude.
      *
-     * @param adm4 Kode wilayah administrasi tingkat IV dari Kementerian Dalam Negeri.
+     * @param latitude Latitude lokasi.
+     * @param longitude Longitude lokasi.
      * @return Call<ResponseWeather>
      */
-
-    @GET("publik/prakiraan-cuaca")
+    @GET("weather/forecast")
     fun getWeatherForecast(
-        @Query("adm4") adminCode: String // Parameter kode wilayah
-    ): Call<ResponseWeather>
+        @Query("lat") latitude: Double,    // Parameter latitude
+        @Query("lon") longitude: Double    // Parameter longitude
+    ): Call<ResponseCCWeather>
 }

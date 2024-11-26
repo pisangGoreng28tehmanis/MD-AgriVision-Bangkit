@@ -36,10 +36,12 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        dataBinding = true
     }
 }
 
 dependencies {
+    implementation("androidx.viewpager2:viewpager2:1.0.0")
     implementation(libs.glide)
     implementation ("androidx.recyclerview:recyclerview:1.3.0")
     implementation(libs.retrofit)

@@ -1,64 +1,60 @@
-package com.agrivision.ui.adapter
+package com.agrivision.ui.weather
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.agrivision.R
-import com.agrivision.data.response.CuacaItemItem
+import com.agrivision.data.response.RamalanItem
+import com.agrivision.databinding.ItemWeatherBinding
 
-class WeatherAdapter : ListAdapter<CuacaItemItem, WeatherAdapter.WeatherViewHolder>(DiffCallback()) {
+class WeatherAdapter : RecyclerView.Adapter<WeatherAdapter.WeatherViewHolder>() {
+
+    private val weatherList = ArrayList<RamalanItem>()
+
+    fun setWeatherList(list: List<RamalanItem>) {
+        weatherList.clear()
+        weatherList.addAll(list)
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WeatherViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_weather, parent, false)
-        return WeatherViewHolder(view)
+        val binding = ItemWeatherBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
+        )
+        return WeatherViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: WeatherViewHolder, position: Int) {
-        val weather = getItem(position)  // Use getItem() for ListAdapter
-        holder.bind(weather)
+        holder.bind(weatherList[position])
     }
 
-    // ViewHolder class
-    class WeatherViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val temperatureText: TextView = itemView.findViewById(R.id.tv_temperature)
-        private val humidityText: TextView = itemView.findViewById(R.id.tv_humidity)
-        private val weatherDescText: TextView = itemView.findViewById(R.id.tv_weather_desc)
-        private val timeText: TextView = itemView.findViewById(R.id.tv_time)
-        private val weatherIcon: ImageView = itemView.findViewById(R.id.iv_weather_icon)
+    override fun getItemCount(): Int = weatherList.size
 
-        fun bind(weather: CuacaItemItem) {
-            temperatureText.text = "${weather.t}°C"
-            humidityText.text = "Kelembapan: ${weather.hu}%"
-            weatherDescText.text = weather.weatherDesc
-            timeText.text = weather.localDatetime
+    inner class WeatherViewHolder(private val binding: ItemWeatherBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
-            // Set icon based on weather description
-            val weatherIconResId = when (weather.weatherDescEn.lowercase()) {
-                "clear" -> R.drawable.ic_clear
-                "cloudy" -> R.drawable.ic_cloudy
-                "rainy" -> R.drawable.ic_rain
-                "stormy" -> R.drawable.ic_storm
-                else -> R.drawable.ic_unknown
+        fun bind(item: RamalanItem) {
+            Log.d("WeatherAdapter", "Binding item: ${item.tanggal}, ${item.waktu}, ${item.suhu}, ${item.deskripsi}, ${item.kelembapan}")
+            binding.tvDate.text = item.tanggal
+            binding.tvTime.text = item.waktu
+            binding.tvTemperature.text = item.suhu
+            binding.tvDescription.text = item.deskripsi
+            binding.tvHumidity.text = item.kelembapan
+            // Menampilkan Kota
+            /*binding.tvCity.text = item.kota // Pastikan item.kota ada di data model*/
+
+            // Menentukan ikon berdasarkan deskripsi cuaca
+            when (item.deskripsi) {
+                "light rain" -> binding.ivWeatherIcon.setImageResource(R.drawable.ic_rain)
+                "overcast clouds" -> binding.ivWeatherIcon.setImageResource(R.drawable.ic_cloudy)
+                "moderate rain" -> binding.ivWeatherIcon.setImageResource(R.drawable.ic_storm)
+                "broken clouds" -> binding.ivWeatherIcon.setImageResource(R.drawable.ic_clock_local)
+                else -> binding.ivWeatherIcon.setImageResource(R.drawable.ic_clear)
             }
-            weatherIcon.setImageResource(weatherIconResId)
-        }
-    }
-
-    // DiffCallback to compare data
-    class DiffCallback : DiffUtil.ItemCallback<CuacaItemItem>() {
-        override fun areItemsTheSame(oldItem: CuacaItemItem, newItem: CuacaItemItem): Boolean {
-            // Compare based on unique identifier, assuming datetime is unique
-            return oldItem.datetime == newItem.datetime
-        }
-
-        override fun areContentsTheSame(oldItem: CuacaItemItem, newItem: CuacaItemItem): Boolean {
-            // Check if the content is the same
-            return oldItem == newItem
         }
     }
 }
