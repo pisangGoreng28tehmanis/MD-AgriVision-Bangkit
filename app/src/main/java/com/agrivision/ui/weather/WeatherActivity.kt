@@ -2,17 +2,14 @@ package com.agrivision.ui.weather
 
 import android.os.Bundle
 import android.util.Log
-import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.agrivision.R
-import com.agrivision.data.response.CuacaItemItem
-import com.agrivision.data.response.DataItem
-import com.agrivision.data.response.ResponseWeather
+import com.agrivision.data.response.RamalanItem
+import com.agrivision.data.response.ResponseCCWeather
 import com.agrivision.data.retrofit.ApiConfig
 import com.agrivision.databinding.ActivityWeatherBinding
-import com.agrivision.ui.adapter.WeatherAdapter
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -22,83 +19,74 @@ class WeatherActivity : AppCompatActivity() {
     private lateinit var binding: ActivityWeatherBinding
     private lateinit var weatherAdapter: WeatherAdapter
 
-    companion object {
-        private const val TAG = "WeatherActivity"
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_weather)
         binding = ActivityWeatherBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setupRecyclerView() // Setup RecyclerView untuk menampilkan data cuaca
-        fetchWeatherData() // Ambil data cuaca dari API
-    }
-
-    private fun setupRecyclerView() {
-        // Atur layout manager untuk RecyclerView
-        val layoutManager = LinearLayoutManager(this)
-        binding.rvWeather.layoutManager = layoutManager
-
-        // Tambahkan dekorasi pembatas antar item
-        val itemDecoration = DividerItemDecoration(this, layoutManager.orientation)
-        binding.rvWeather.addItemDecoration(itemDecoration)
-
-        // Inisialisasi adapter tanpa data awal
-        weatherAdapter = WeatherAdapter() // Gunakan constructor tanpa parameter
+        // Initialize RecyclerView and Adapter
+        binding.rvWeather.layoutManager = LinearLayoutManager(this)
+        weatherAdapter = WeatherAdapter()
         binding.rvWeather.adapter = weatherAdapter
+
+        // Fetch weather data for specific latitude and longitude
+        fetchWeatherForecast(-6.362060, 106.840490)  // Example coordinates (change as needed)
     }
 
-    private fun flattenWeatherData(dataItems: List<DataItem>): List<CuacaItemItem> {
-        return dataItems.flatMap { dataItem ->
-            dataItem.cuaca.flatten() // Flatten array dua dimensi menjadi satu list
-        }
-    }
-
-    private fun fetchWeatherData() {
-        // Tampilkan loading saat data sedang diambil
-        showLoading(true)
-
-        // Ambil data cuaca dari API
-        val client = ApiConfig.getApiService().getWeatherForecast("31.71.03.1001")
-        client.enqueue(object : Callback<ResponseWeather> {
-            override fun onResponse(call: Call<ResponseWeather>, response: Response<ResponseWeather>) {
-                showLoading(false)
+    private fun fetchWeatherForecast(latitude: Double, longitude: Double) {
+        val client = ApiConfig.getApiService().getWeatherForecast(latitude, longitude)
+        client.enqueue(object : Callback<ResponseCCWeather> {
+            override fun onResponse(
+                call: Call<ResponseCCWeather>,
+                response: Response<ResponseCCWeather>
+            ) {
                 if (response.isSuccessful) {
-                    val responseBody = response.body()
-                    if (responseBody != null) {
-                        // Log untuk memastikan data berhasil diterima
-                        Log.d(TAG, "Data received: ${responseBody.data}")
+                    val weatherData = response.body()
+                    if (weatherData != null) {
+                        binding.tvCityName.text = weatherData.kota // Access the city name
+                        // Clear existing data
+                        val ramalanList = ArrayList<RamalanItem>()
 
-                        val allWeatherList = flattenWeatherData(responseBody.data)
-                        updateWeatherList(allWeatherList)
+                        // Add each ramalan for each date to the list
+                        weatherData.ramalan.forEach { ramalanPerTanggal ->
+                            ramalanList.addAll(ramalanPerTanggal.ramalan)  // Add all forecasts for that date
+                        }
+
+                        // Set the new weather list in the adapter
+                        weatherAdapter.setWeatherList(ramalanList)
+                        // Assuming you want to use the description of the first item
+                        //val firstDescription = ramalanList.firstOrNull()?.deskripsi ?: ""
+                        //updateBackgroundBasedOnWeather(firstDescription)
                     } else {
-                        Log.e(TAG, "Response body is null")
+                        Toast.makeText(this@WeatherActivity, "Data kosong", Toast.LENGTH_SHORT).show()
                     }
                 } else {
-                    Log.e(TAG, "Response failed: ${response.message()}")
+                    Toast.makeText(this@WeatherActivity, "Gagal memuat data", Toast.LENGTH_SHORT).show()
                 }
             }
 
-            override fun onFailure(call: Call<ResponseWeather>, t: Throwable) {
-                showLoading(false)
-                Log.e(TAG, "Fetch failed: ${t.message}")
+            override fun onFailure(call: Call<ResponseCCWeather>, t: Throwable) {
+                Toast.makeText(this@WeatherActivity, "Gagal terhubung ke server", Toast.LENGTH_SHORT).show()
             }
         })
     }
 
-    private fun updateWeatherList(weatherList: List<CuacaItemItem>) {
-        if (weatherList.isNotEmpty()) {
-            // Update adapter dengan data cuaca yang diterima dari API
-            weatherAdapter.submitList(weatherList)
-        } else {
-            Log.e(TAG, "No weather data to display")
+    /*private fun updateBackgroundBasedOnWeather(description: String) {
+        // Set gradient background based on the weather description
+        Log.d("WeatherActivity", "Weather description: $description") // Debugging line
+        when {
+            description.contains("overcast clouds", ignoreCase = true) -> {
+                binding.root.setBackgroundResource(R.drawable.gradient_sunny) // Set gradient sunny
+            }
+            description.contains("light rain", ignoreCase = true) -> {
+                binding.root.setBackgroundResource(R.drawable.gradient_cloudy) // Set gradient cloudy
+            }
+            description.contains("moderate rain", ignoreCase = true) -> {
+                binding.root.setBackgroundResource(R.drawable.gradient_rainy) // Set gradient rainy
+            }
+            else -> {
+                binding.root.setBackgroundResource(R.drawable.gradient_cloudy) // Default cloudy
+            }
         }
-    }
-
-    private fun showLoading(isLoading: Boolean) {
-        // Menampilkan progress bar saat data sedang dimuat
-        binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
-    }
+    }*/
 }
