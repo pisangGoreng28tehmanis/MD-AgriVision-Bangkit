@@ -31,3 +31,17 @@ data class RamalanItem(
 	@field:SerializedName("kelembapan")
 	val kelembapan: String
 )
+
+data class CuacaItem(
+	@field:SerializedName("kota")
+	val kota: String,
+
+	@field:SerializedName("temperatur")
+	val temperatur: String,
+
+	@field:SerializedName("deskripsi")
+	val deskripsi: String,
+
+	@field:SerializedName("kelembapan")
+	val kelembapan: String
+)

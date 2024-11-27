@@ -1,13 +1,19 @@
 package com.agrivision.ui.home
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -19,9 +25,13 @@ import com.agrivision.ui.artikel.ArtikelFragment
 import com.agrivision.ui.artikel.ListNewsAdapter
 import com.agrivision.ui.detail.DetailActivity
 import com.agrivision.ui.weather.WeatherActivity
+import com.agrivision.utils.fetchLatestWeatherForecast
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
+import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment() {
-
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
     private var _binding: FragmentHomeBinding? = null
 
     // This property is only valid between onCreateView and
@@ -29,6 +39,22 @@ class HomeFragment : Fragment() {
 
     private val binding get() = _binding!!
     private lateinit var rvTrick: RecyclerView
+    private val requestPermissionLauncher =
+        registerForActivityResult(
+            ActivityResultContracts.RequestMultiplePermissions()
+        ) { permissions ->
+            when {
+                permissions[Manifest.permission.ACCESS_FINE_LOCATION] ?: false -> {
+                    getMyLastLocation()
+                }
+                permissions[Manifest.permission.ACCESS_COARSE_LOCATION] ?: false -> {
+                    getMyLastLocation()
+                }
+                else -> {
+                    Toast.makeText(requireActivity(),"Anda belum mengizinkan lokasi", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,10 +66,10 @@ class HomeFragment : Fragment() {
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
 
         rvTrick = binding.rvTrick
         rvTrick.setHasFixedSize(true)
-
 //        val textView: TextView = binding.textHome
         homeViewModel.text.observe(viewLifecycleOwner) {
 //            textView.text = it
@@ -57,6 +83,7 @@ class HomeFragment : Fragment() {
             startActivity(intent)
         }
         showRecyclerList()
+        getMyLastLocation()
 
         return root
     }
@@ -76,7 +103,6 @@ class HomeFragment : Fragment() {
         rvTrick.layoutManager = LinearLayoutManager(context)
         val listNewsAdapter = ListNewsAdapter(list)
         rvTrick.adapter = listNewsAdapter
-
         // Handle item click
         listNewsAdapter.onItemClick = { news ->
             val intent = Intent(context, DetailActivity::class.java).apply {
@@ -85,6 +111,77 @@ class HomeFragment : Fragment() {
                 putExtra("EXTRA_PHOTO", news.photo)
             }
             startActivity(intent)
+        }
+    }
+
+    private fun checkPermission(permission: String): Boolean {
+        return ContextCompat.checkSelfPermission(
+            requireActivity(),
+            permission
+        ) == PackageManager.PERMISSION_GRANTED
+    }
+    private fun getMyLastLocation() {
+        if(checkPermission(Manifest.permission.ACCESS_FINE_LOCATION) &&
+            checkPermission(Manifest.permission.ACCESS_COARSE_LOCATION)
+        ){
+            fusedLocationClient.lastLocation.addOnSuccessListener { location ->
+                if (location != null){
+                    getWeatherData(location.latitude,location.longitude)
+                } else {
+                    Toast.makeText(requireActivity(), "Gagal mendapatkan lokasi", Toast.LENGTH_SHORT).show()
+                }
+            }.addOnFailureListener {
+                Toast.makeText(requireActivity(), "Gagal mendapatkan lokasi: ${it.message}", Toast.LENGTH_SHORT).show()
+            }
+        } else {
+            requestPermissionLauncher.launch(
+                arrayOf(
+                    Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.ACCESS_COARSE_LOCATION
+                )
+            )
+        }
+    }
+    fun getWeatherData(lat: Double, long: Double){
+        if(checkPermission(Manifest.permission.ACCESS_FINE_LOCATION) &&
+            checkPermission(Manifest.permission.ACCESS_COARSE_LOCATION)
+        ) {
+            fusedLocationClient.lastLocation.addOnSuccessListener { location ->
+                lifecycleScope.launch {
+                    try {
+                        // Panggil fetchLatestWeatherForecast dengan latitude dan longitude
+                        val (cityName, temperature, description, humidity) = fetchLatestWeatherForecast(
+                            lat,
+                            long
+                        )
+
+                        binding.tvCity.text = cityName
+                        binding.tvTemperature.text = temperature
+                        binding.tvDescription.text = description
+                        binding.tvHumidity.text = humidity
+
+                        when (description) {
+                            "light rain" -> binding.ivWeatherIcon.setImageResource(R.drawable.ic_rain)
+                            "overcast clouds" -> binding.ivWeatherIcon.setImageResource(R.drawable.ic_cloudy)
+                            "moderate rain" -> binding.ivWeatherIcon.setImageResource(R.drawable.ic_storm)
+                            "broken clouds" -> binding.ivWeatherIcon.setImageResource(R.drawable.ic_clock_local)
+                            else -> binding.ivWeatherIcon.setImageResource(R.drawable.ic_clear)
+                        }
+
+
+                    } catch (e: Exception) {
+                        Toast.makeText(requireActivity(), "Error: ${e.message}", Toast.LENGTH_SHORT)
+                            .show()
+                    }
+                }
+            }
+        } else {
+            requestPermissionLauncher.launch(
+                arrayOf(
+                    Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.ACCESS_COARSE_LOCATION
+                )
+            )
         }
     }
 
