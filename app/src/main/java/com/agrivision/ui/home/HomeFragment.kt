@@ -157,15 +157,21 @@ class HomeFragment : Fragment() {
 
                         binding.tvCity.text = cityName
                         binding.tvTemperature.text = temperature
-                        binding.tvDescription.text = description
+                        when (description) {
+                            "light rain" -> binding.tvDescription.text = "Hujan Ringan"
+                            "overcast clouds" -> binding.tvDescription.text = "Mendung"
+                            "moderate rain" -> binding.tvDescription.text = "Hujan Lebat"
+                            "broken clouds" -> binding.tvDescription.text = "Berawan"
+                            else -> binding.tvDescription.text = "Cerah"
+                        }
                         binding.tvHumidity.text = humidity
 
                         when (description) {
-                            "light rain" -> binding.ivWeatherIcon.setImageResource(R.drawable.ic_rain)
-                            "overcast clouds" -> binding.ivWeatherIcon.setImageResource(R.drawable.ic_cloudy)
-                            "moderate rain" -> binding.ivWeatherIcon.setImageResource(R.drawable.ic_storm)
-                            "broken clouds" -> binding.ivWeatherIcon.setImageResource(R.drawable.ic_clock_local)
-                            else -> binding.ivWeatherIcon.setImageResource(R.drawable.ic_clear)
+                            "light rain" -> binding.ivWeatherIcon.setImageResource(R.drawable.ic_rain_home)
+                            "overcast clouds" -> binding.ivWeatherIcon.setImageResource(R.drawable.ic_cloudy_home)
+                            "moderate rain" -> binding.ivWeatherIcon.setImageResource(R.drawable.ic_storm_home)
+                            "broken clouds" -> binding.ivWeatherIcon.setImageResource(R.drawable.ic_morning_cloud)
+                            else -> binding.ivWeatherIcon.setImageResource(R.drawable.ic_clear_home)
                         }
 
 

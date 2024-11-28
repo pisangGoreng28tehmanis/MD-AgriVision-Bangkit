@@ -13,8 +13,7 @@
         android:textSize="20sp"
         android:textStyle="bold"
         android:padding="20dp"
-        android:background="@color/md_theme_primary_highContrast"
-        android:textColor="@android:color/white"
+        android:textColor="@color/md_theme_inverseSurface_highContrast"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
