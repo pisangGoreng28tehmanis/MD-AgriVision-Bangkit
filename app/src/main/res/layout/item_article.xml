@@ -41,38 +41,39 @@
 
         <!-- Nama item di bawah gambar -->
         <TextView
-            android:id="@+id/tv_item_name"
+            android:id="@+id/tv_item_author"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="8dp"
-            android:textSize="16sp"
-            android:textStyle="bold"
             android:gravity="fill"
             android:textColor="@color/md_theme_inverseSurface_highContrast"
-            card_view:layout_constraintTop_toBottomOf="@id/cv_img"
-            card_view:layout_constraintStart_toStartOf="parent"
+            android:textSize="12sp"
+            android:textStyle="italic"
             card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintTop_toBottomOf="@id/cv_img"
             tools:text="@string/heroes_name" />
 
         <!-- Deskripsi item di bawah nama -->
         <TextView
-            android:id="@+id/tv_item_description"
+            android:id="@+id/tv_item_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="5dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="24dp"
             android:ellipsize="end"
-            android:maxLines="5"
             android:gravity="fill"
+            android:maxLines="5"
+            android:textStyle="bold"
             android:textColor="@color/md_theme_inverseSurface_highContrast"
-            card_view:layout_constraintTop_toBottomOf="@id/tv_item_name"
-            card_view:layout_constraintStart_toStartOf="parent"
-            card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintBottom_toBottomOf="parent"
+            card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintTop_toBottomOf="@id/tv_item_author"
             tools:text="@string/description" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

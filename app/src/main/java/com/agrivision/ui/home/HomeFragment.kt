@@ -23,7 +23,7 @@ import com.agrivision.R
 import com.agrivision.data.News
 import com.agrivision.databinding.FragmentHomeBinding
 import com.agrivision.ui.fertilizerpredict.FormFertilizerActivity
-import com.agrivision.ui.artikel.ListNewsAdapter
+import com.agrivision.ui.artikel.ListArticleAdapter
 import com.agrivision.ui.detail.DetailActivity
 import com.agrivision.ui.weather.WeatherActivity
 import com.agrivision.utils.fetchLatestWeatherForecast
@@ -76,7 +76,7 @@ class HomeFragment : Fragment() {
             startActivity(intent)
         }
 
-        showRecyclerList()
+//        showRecyclerList()
         return binding.root
     }
 
@@ -92,20 +92,20 @@ class HomeFragment : Fragment() {
         return listHero
     }
 
-    fun showRecyclerList() {
-        val list = getListTrick()
-        rvTrick.layoutManager = LinearLayoutManager(context)
-        val listNewsAdapter = ListNewsAdapter(list)
-        rvTrick.adapter = listNewsAdapter
-        listNewsAdapter.onItemClick = { news ->
-            val intent = Intent(context, DetailActivity::class.java).apply {
-                putExtra("EXTRA_NAME", news.name)
-                putExtra("EXTRA_DESCRIPTION", news.description)
-                putExtra("EXTRA_PHOTO", news.photo)
-            }
-            startActivity(intent)
-        }
-    }
+//    fun showRecyclerList() {
+//        val list = getListTrick()
+//        rvTrick.layoutManager = LinearLayoutManager(context)
+//        val listArticleAdapter = ListArticleAdapter(list)
+//        rvTrick.adapter = listArticleAdapter
+//        listArticleAdapter.onItemClick = { news ->
+//            val intent = Intent(context, DetailActivity::class.java).apply {
+//                putExtra("EXTRA_NAME", news.name)
+//                putExtra("EXTRA_DESCRIPTION", news.description)
+//                putExtra("EXTRA_PHOTO", news.photo)
+//            }
+//            startActivity(intent)
+//        }
+//    }
 
     private fun checkPermission(permission: String): Boolean {
         return ContextCompat.checkSelfPermission(requireActivity(), permission) == PackageManager.PERMISSION_GRANTED

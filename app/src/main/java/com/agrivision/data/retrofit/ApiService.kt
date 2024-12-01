@@ -1,6 +1,8 @@
 package com.agrivision.data.retrofit
 
 import com.agrivision.data.FertilizerData
+import com.agrivision.data.response.ArticleResponse
+import com.agrivision.data.response.ArticleResponseItem
 import com.agrivision.data.response.FertilizerPrediction
 import com.agrivision.data.response.ResponseCCWeather
 import com.agrivision.data.response.Token
@@ -28,4 +30,7 @@ interface ApiService {
         @Header("Authorization") accessToken: String,
         @Body fertilizerBody: FertilizerData
     ): Response<FertilizerPrediction>
+
+    @GET("articles/all")
+    suspend fun getArticles(): Response<List<ArticleResponseItem>>
 }
