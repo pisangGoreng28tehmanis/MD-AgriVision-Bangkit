@@ -13,7 +13,24 @@ class ApiConfig {
                 .addInterceptor(loggingInterceptor)
                 .build()
             val retrofit = Retrofit.Builder()
-                .baseUrl("https://weather-api-59998104202.asia-southeast2.run.app") // Base URL API BMKG (diubah ke root URL)
+                .baseUrl("https://weather-api-59998104202.asia-southeast2.run.app")
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(client)
+                .build()
+            return retrofit.create(ApiService::class.java)
+        }
+    }
+}
+
+class ApiConfigML {
+    companion object {
+        fun getApiService(): ApiService {
+            val loggingInterceptor = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
+            val client = OkHttpClient.Builder()
+                .addInterceptor(loggingInterceptor)
+                .build()
+            val retrofit = Retrofit.Builder()
+                .baseUrl("https://mlapi-agri-59998104202.asia-southeast2.run.app/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build()

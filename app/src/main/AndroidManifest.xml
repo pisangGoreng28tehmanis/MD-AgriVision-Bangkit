@@ -14,7 +14,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/ThemeOverlay.AgriVision.HighContrast"
+        android:theme="@style/ThemeOverlay.AgriVision.Custom"
         tools:targetApi="31">
         <activity
             android:name=".ui.weather.WeatherActivity"
@@ -23,7 +23,7 @@
             android:name=".ui.detail.DetailActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.FormFertilizerActivity"
+            android:name=".ui.fertilizerpredict.FormFertilizerActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

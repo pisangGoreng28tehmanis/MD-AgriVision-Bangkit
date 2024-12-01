@@ -1,23 +1,31 @@
 package com.agrivision.data.retrofit
 
+import com.agrivision.data.FertilizerData
+import com.agrivision.data.response.FertilizerPrediction
 import com.agrivision.data.response.ResponseCCWeather
+import com.agrivision.data.response.Token
 import retrofit2.Call
 import retrofit2.Response
+import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.Header
+import retrofit2.http.POST
 import retrofit2.http.Query
 
 interface ApiService {
 
-    /**
-     * Mendapatkan data prakiraan cuaca berdasarkan latitude dan longitude.
-     *
-     * @param latitude Latitude lokasi.
-     * @param longitude Longitude lokasi.
-     * @return Call<ResponseWeather>
-     */
     @GET("weather/forecast")
     suspend fun getWeatherForecast(
         @Query("lat") latitude: Double,    // Parameter latitude
         @Query("lon") longitude: Double    // Parameter longitude
     ): Response<ResponseCCWeather>
+
+    @POST("/token")
+    suspend fun getToken(): Response<Token>
+
+    @POST("/kalkulator-pupuk")
+    suspend fun getFertilizerPred(
+        @Header("Authorization") accessToken: String,
+        @Body fertilizerBody: FertilizerData
+    ): Response<FertilizerPrediction>
 }

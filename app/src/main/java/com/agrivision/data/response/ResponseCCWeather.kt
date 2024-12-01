@@ -45,3 +45,15 @@ data class CuacaItem(
 	@field:SerializedName("kelembapan")
 	val kelembapan: String
 )
+
+data class Token(
+
+	@field:SerializedName("access_token")
+	val accessToken: String? = null
+)
+
+data class FertilizerPrediction(
+
+	@field:SerializedName("predicted_fertilizer")
+	val predictedFertilizer: String? = null
+)
