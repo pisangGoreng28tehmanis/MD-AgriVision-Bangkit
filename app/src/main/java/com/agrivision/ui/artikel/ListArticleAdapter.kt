@@ -51,8 +51,11 @@ class ListArticleAdapter(val listArticle: ArrayList<ArticleResponseItem>) : Recy
 
             val intentDetail = Intent(holder.itemView.context, DetailActivity::class.java)
             intentDetail.putExtra("id", articles.id)
+            intentDetail.putExtra("date", articles.jsonMember2Date)
             intentDetail.putExtra("title", articles.jsonMember4Title)
+            intentDetail.putExtra("author", articles.jsonMember3Author)
             intentDetail.putExtra("imageLogo", articles.jsonMember5ImageURL)
+            intentDetail.putExtra("desc", articles.jsonMember6Content)
             holder.itemView.context.startActivity(intentDetail)
 
         }

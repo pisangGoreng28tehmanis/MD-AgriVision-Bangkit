@@ -21,7 +21,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.agrivision.R
 import com.agrivision.data.News
+import com.agrivision.data.response.ArticleResponseItem
 import com.agrivision.databinding.FragmentHomeBinding
+import com.agrivision.ui.artikel.ArtikelViewModel
 import com.agrivision.ui.fertilizerpredict.FormFertilizerActivity
 import com.agrivision.ui.artikel.ListArticleAdapter
 import com.agrivision.ui.detail.DetailActivity
@@ -35,6 +37,7 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private lateinit var rvTrick: RecyclerView
+    private val listArticleAdapter = ListArticleAdapter(arrayListOf())
 
     // Permission request launcher
     private val requestPermissionLauncher = registerForActivityResult(
@@ -58,8 +61,9 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
 
-        rvTrick = binding.rvTrick
-        rvTrick.setHasFixedSize(true)
+        val artikelViewModel =
+            ViewModelProvider(this).get(ArtikelViewModel::class.java)
+
         getMyLastLocation()
 
         homeViewModel.text.observe(viewLifecycleOwner) { }
@@ -76,21 +80,55 @@ class HomeFragment : Fragment() {
             startActivity(intent)
         }
 
+        rvTrick = binding.rvTrick
+        rvTrick.setHasFixedSize(true)
+        rvTrick.layoutManager = LinearLayoutManager(requireActivity())
+        rvTrick.adapter = listArticleAdapter
+        // Show the list of articles
 //        showRecyclerList()
+
+        artikelViewModel.articlesItem.observe(requireActivity()){articleList ->
+            setArticlesData(articleList)
+
+        }
+
+        artikelViewModel.isLoading.observe(requireActivity()) {
+            loading(it)
+        }
+
         return binding.root
     }
 
-    private fun getListTrick(): ArrayList<News> {
-        val dataName = resources.getStringArray(R.array.data_name)
-        val dataDescription = resources.getStringArray(R.array.data_description)
-        val dataPhoto = resources.obtainTypedArray(R.array.data_photo)
-        val listHero = ArrayList<News>()
-        for (i in dataName.indices) {
-            val hero = News(dataName[i], dataDescription[i], dataPhoto.getResourceId(i, -1))
-            listHero.add(hero)
+//    private fun getListArticle(): ArrayList<ArticleResponseItem> {
+//
+//    }
+
+    fun loading(isLoading: Boolean) {
+        if (isLoading != false) {
+            binding.progressBar2.visibility = View.VISIBLE
+        } else {
+            binding.progressBar2.visibility = View.GONE
         }
-        return listHero
     }
+    private fun setArticlesData(dataEvents: List<ArticleResponseItem>) {
+        listArticleAdapter.apply {
+            listArticle.clear()
+            listArticle.addAll(dataEvents.take(5))
+            notifyDataSetChanged()
+        }
+    }
+
+//    private fun getListTrick(): ArrayList<News> {
+//        val dataName = resources.getStringArray(R.array.data_name)
+//        val dataDescription = resources.getStringArray(R.array.data_description)
+//        val dataPhoto = resources.obtainTypedArray(R.array.data_photo)
+//        val listHero = ArrayList<News>()
+//        for (i in dataName.indices) {
+//            val hero = News(dataName[i], dataDescription[i], dataPhoto.getResourceId(i, -1))
+//            listHero.add(hero)
+//        }
+//        return listHero
+//    }
 
 //    fun showRecyclerList() {
 //        val list = getListTrick()

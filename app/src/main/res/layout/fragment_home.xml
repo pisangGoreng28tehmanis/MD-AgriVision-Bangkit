@@ -272,16 +272,37 @@
         android:textSize="13sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fl_pupuk" />
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvTrick"
-        android:layout_width="0dp"
+
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvTrick"
+            android:layout_width="match_parent"
+            android:layout_height="280dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_trik"
+            app:layout_constraintVertical_bias="0.025">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+
+
+    <ProgressBar
+        android:id="@+id/progressBar2"
+        style="?android:attr/progressBarStyle"
+        android:indeterminateTint="@color/md_theme_primary_highContrast"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_trik"
-        app:layout_constraintVertical_bias="0.025" />
+        app:layout_constraintBottom_toBottomOf="@+id/rvTrick"
+        app:layout_constraintEnd_toEndOf="@+id/rvTrick"
+        app:layout_constraintStart_toStartOf="@+id/rvTrick"
+        app:layout_constraintTop_toTopOf="@+id/rvTrick" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
