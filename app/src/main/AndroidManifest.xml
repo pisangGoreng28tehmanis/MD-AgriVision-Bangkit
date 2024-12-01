@@ -15,18 +15,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/ThemeOverlay.AgriVision.Custom"
+        android:configChanges="orientation|screenSize"
         tools:targetApi="31">
         <activity
             android:name=".ui.weather.WeatherActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".ui.detail.DetailActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".ui.fertilizerpredict.FormFertilizerActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
+            android:screenOrientation="portrait"
             android:exported="true"
             android:label="@string/app_name">
             <intent-filter>
