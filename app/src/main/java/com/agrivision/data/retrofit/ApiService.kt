@@ -1,9 +1,12 @@
 package com.agrivision.data.retrofit
 
 import com.agrivision.data.FertilizerData
+import com.agrivision.data.message
 import com.agrivision.data.response.ArticleResponse
 import com.agrivision.data.response.ArticleResponseItem
+import com.agrivision.data.response.ChatResponse
 import com.agrivision.data.response.FertilizerPrediction
+import com.agrivision.data.response.PartsItem
 import com.agrivision.data.response.ResponseCCWeather
 import com.agrivision.data.response.Token
 import retrofit2.Call
@@ -34,6 +37,11 @@ interface ApiService {
 
     @GET("articles/all")
     suspend fun getArticles(): Response<List<ArticleResponseItem>>
+
+    @POST("chatbot")
+    suspend fun getChatResponse(
+        @Body message: message
+    ): Response<ChatResponse>
 
     @GET("articles/{id}")
     suspend fun getArticlesDetail(

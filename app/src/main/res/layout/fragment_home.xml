@@ -1,45 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ui.home.HomeFragment">
     <TextView
         android:id="@+id/tv_welcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
+        android:layout_marginStart="20dp"
         android:text="Welcome To AgriVision"
         android:textColor="@color/md_theme_inverseSurface_highContrast"
         android:textSize="24sp"
-        android:textStyle="italic"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textStyle="italic" />
     <TextView
         android:id="@+id/tv_cuaca"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
+        android:layout_marginStart="20dp"
         android:text="Prakiraan cuaca"
         android:textColor="@color/md_theme_inverseSurface_highContrast"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_welcome" />
+        android:textSize="16sp" />
+
     <FrameLayout
         android:id="@+id/fl_cuaca"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_cuaca">
+        android:layout_marginTop="5dp">
         <Button
             android:id="@+id/btnCuaca"
             android:layout_width="340dp"
@@ -47,7 +39,6 @@
             android:background="@drawable/cuaca_background"
             android:padding="10dp"
             android:visibility="gone"/>
-
 
         <Button
             android:id="@+id/btnCuacaFailed"
@@ -132,16 +123,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="20dp"
                 android:textColor="@color/md_theme_inverseOnSurface_highContrast"
-                android:textSize="18sp"
+                android:textSize="14sp"
                 android:textStyle="italic"
                 tools:text="Jakarta, ID" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -163,7 +155,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/md_theme_inverseOnSurface_highContrast"
-                        android:textSize="30dp"
+                        android:textSize="34dp"
                         tools:text="30°C" />
 
                     <LinearLayout
@@ -198,99 +190,92 @@
 
     </FrameLayout>
 
-    <FrameLayout
-        android:id="@+id/fl_pupuk"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintEnd_toStartOf="@id/fl_chat"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fl_cuaca">
-        <ImageButton
-            android:id="@+id/btn_pupuk"
-            android:layout_width="168dp"
-            android:layout_height="128dp"
-            android:background="@drawable/button_background"
-            android:padding="10dp"
-            android:src="@drawable/ic_search" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="45dp"
-            android:text="Kalkulator Pupuk"
-            android:textColor="@color/md_theme_inverseSurface_highContrast" />
-        />
-    </FrameLayout>
-    <FrameLayout
-        android:id="@+id/fl_chat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/fl_pupuk"
-        app:layout_constraintTop_toBottomOf="@+id/fl_cuaca">
-        <ImageButton
-            android:id="@+id/btn_chat"
-            android:layout_width="168dp"
-            android:layout_height="128dp"
-            android:background="@drawable/button_background"
-            android:padding="10dp"
-            android:src="@drawable/ic_chat" />
-        <TextView
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <FrameLayout
+            android:id="@+id/fl_chat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="45dp"
-            android:text="Tanya bot kami"
-            android:textColor="@color/md_theme_inverseSurface_highContrast" />
-        />
-    </FrameLayout>
-    <TextView
-        android:id="@+id/tv_trik"
-        android:layout_width="wrap_content"
+            android:layout_weight="1">
+            <ImageButton
+                android:id="@+id/btn_chat"
+                android:layout_width="168dp"
+                android:layout_height="128dp"
+                android:background="@drawable/button_background"
+                android:padding="10dp"
+                android:src="@drawable/ic_chat" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="45dp"
+                android:text="Tanya bot kami"
+                android:textColor="@color/md_theme_inverseSurface_highContrast" />
+            />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/fl_pupuk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:layout_marginStart="10dp">
+
+            <ImageButton
+                android:id="@+id/btn_pupuk"
+                android:layout_width="168dp"
+                android:layout_height="128dp"
+                android:background="@drawable/button_background"
+                android:padding="10dp"
+                android:src="@drawable/ic_search" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="45dp"
+                android:text="Kalkulator Pupuk"
+                android:textColor="@color/md_theme_inverseSurface_highContrast" />
+            />
+        </FrameLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="15dp"
-        android:text="Tips &amp; Trik"
-        android:textColor="@color/md_theme_inverseSurface_highContrast"
-        android:textSize="13sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fl_chat" />
-    <TextView
-        android:id="@+id/tv_more"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="30dp"
-        android:text="Lihat Lebih Banyak"
-        android:textColor="@color/md_theme_inverseSurface_highContrast"
-        android:textSize="13sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fl_pupuk" />
+        android:orientation="horizontal">
 
-
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvTrick"
-            android:layout_width="match_parent"
-            android:layout_height="280dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_trik"
-            app:layout_constraintVertical_bias="0.025">
-
-        </androidx.recyclerview.widget.RecyclerView>
-
+        <TextView
+            android:id="@+id/tv_trik"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="15dp"
+            android:text="Tips &amp; Trik"
+            android:textColor="@color/md_theme_inverseSurface_highContrast"
+            android:textSize="13sp"/>
+        <TextView
+            android:id="@+id/tv_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="30dp"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text="Lihat Lebih Banyak"
+            android:textColor="@color/md_theme_inverseSurface_highContrast"
+            android:textSize="13sp"/>
+    </LinearLayout>
 
 
     <ProgressBar
@@ -298,11 +283,22 @@
         style="?android:attr/progressBarStyle"
         android:indeterminateTint="@color/md_theme_primary_highContrast"
         android:visibility="gone"
+        android:layout_marginTop="50dp"
+        android:layout_gravity="center"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/rvTrick"
-        app:layout_constraintEnd_toEndOf="@+id/rvTrick"
-        app:layout_constraintStart_toStartOf="@+id/rvTrick"
-        app:layout_constraintTop_toTopOf="@+id/rvTrick" />
+        android:layout_height="wrap_content" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvTrick"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="120dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp">
+        </androidx.recyclerview.widget.RecyclerView>
+
+
+
+
+</LinearLayout>

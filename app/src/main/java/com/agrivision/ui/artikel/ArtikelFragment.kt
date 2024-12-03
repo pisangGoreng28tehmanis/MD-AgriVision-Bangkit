@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -37,12 +38,25 @@ class ArtikelFragment : Fragment() {
         rvNews.setHasFixedSize(true)
         rvNews.layoutManager = LinearLayoutManager(requireActivity())
         rvNews.adapter = listArticleAdapter
-        // Show the list of articles
-//        showRecyclerList()
+
+        binding.searchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                artikelViewModel.searchArticles(query ?: "")
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                artikelViewModel.searchArticles(newText ?: "")
+                return true
+            }
+        })
 
         artikelViewModel.articlesItem.observe(requireActivity()){articleList ->
             setArticlesData(articleList)
 
+        }
+        artikelViewModel.search.observe(requireActivity()){ searchArticle ->
+            setArticlesData(searchArticle)
         }
 
         artikelViewModel.isLoading.observe(requireActivity()) {

@@ -84,3 +84,26 @@ data class ArticleResponseItem(
 	@field:SerializedName("3. author")
 	val jsonMember3Author: String
 )
+
+
+data class ChatResponse(
+
+	@field:SerializedName("reply")
+	val reply: Reply
+)
+
+data class PartsItem(
+
+	@field:SerializedName("text")
+	val text: String
+)
+
+data class Reply(
+
+	@field:SerializedName("role")
+	val role: String,
+
+	@field:SerializedName("parts")
+	val parts: List<PartsItem>
+)
+

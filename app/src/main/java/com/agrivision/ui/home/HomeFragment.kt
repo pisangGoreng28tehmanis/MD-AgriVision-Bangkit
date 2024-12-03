@@ -26,6 +26,7 @@ import com.agrivision.databinding.FragmentHomeBinding
 import com.agrivision.ui.artikel.ArtikelViewModel
 import com.agrivision.ui.fertilizerpredict.FormFertilizerActivity
 import com.agrivision.ui.artikel.ListArticleAdapter
+import com.agrivision.ui.chatbot.ChatActivity
 import com.agrivision.ui.detail.DetailActivity
 import com.agrivision.ui.weather.WeatherActivity
 import com.agrivision.utils.fetchLatestWeatherForecast
@@ -77,6 +78,11 @@ class HomeFragment : Fragment() {
 
         binding.btnCuaca.setOnClickListener {
             val intent = Intent(requireActivity(), WeatherActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.btnChat.setOnClickListener {
+            val intent = Intent(requireActivity(), ChatActivity::class.java)
             startActivity(intent)
         }
 

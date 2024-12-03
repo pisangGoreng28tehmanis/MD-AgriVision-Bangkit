@@ -14,3 +14,8 @@ data class FertilizerData(
     val crop_type: String
 ) : Parcelable
 
+@Parcelize
+data class message(
+    val message: String
+) : Parcelable
+
