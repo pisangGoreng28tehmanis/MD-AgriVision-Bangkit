@@ -1,14 +1,15 @@
 package com.agrivision
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.agrivision.databinding.ActivityMainBinding
+import com.agrivision.ui.oauth.LoginActivity
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -16,25 +17,30 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
 
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        // Cek apakah pengguna sudah login
+        val sharedPreferences = getSharedPreferences("user_prefs", MODE_PRIVATE)
+        val isLoggedIn = sharedPreferences.getBoolean("is_logged_in", false)
 
-        val navView: BottomNavigationView = binding.navView
+        if (!isLoggedIn) {
+            // Jika belum login, arahkan ke login screen
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            finish()  // Agar pengguna tidak bisa kembali ke MainActivity
+        } else {
+            enableEdgeToEdge() // Enable edge-to-edge setelah login
 
-        val navController = findNavController(R.id.nav_host_fragment_activity_main)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-//        val appBarConfiguration = AppBarConfiguration(
-//            setOf(
-//                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications
-//            )
-//        )
-//        setupActionBarWithNavController(navController, appBarConfiguration)
+            binding = ActivityMainBinding.inflate(layoutInflater)
+            setContentView(binding.root)
 
-        binding.navView.setOnApplyWindowInsetsListener(null)
-        binding.navView.setPadding(0,0,0,0)
-        navView.setupWithNavController(navController)
+            val navView: BottomNavigationView = binding.navView
+
+            val navController = findNavController(R.id.nav_host_fragment_activity_main)
+
+            // Menghubungkan BottomNavigationView dengan NavController
+            binding.navView.setOnApplyWindowInsetsListener(null)
+            binding.navView.setPadding(0, 0, 0, 0)
+            navView.setupWithNavController(navController)
+        }
     }
 }

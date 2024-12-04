@@ -26,6 +26,12 @@
         tools:layout="@layout/fragment_riwayat" />
 
     <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.agrivision.ui.oauth.ProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile" />
+
+    <fragment
         android:id="@+id/formFertilizerFragment"
         android:name="com.agrivision.ui.FormFertilizerFragment"
         android:label="Riwayat"
