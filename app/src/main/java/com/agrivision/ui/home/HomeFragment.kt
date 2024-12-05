@@ -8,6 +8,7 @@ import android.location.LocationManager
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,15 +18,18 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.agrivision.R
-import com.agrivision.data.News
-import com.agrivision.data.response.ArticleResponseItem
+import com.agrivision.data.local.DataStoreManager
+import com.agrivision.data.remote.response.ArticleResponseItem
 import com.agrivision.databinding.FragmentHomeBinding
+import com.agrivision.ui.artikel.ArtikelFragment
 import com.agrivision.ui.artikel.ArtikelViewModel
 import com.agrivision.ui.fertilizerpredict.FormFertilizerActivity
 import com.agrivision.ui.artikel.ListArticleAdapter
+import com.agrivision.ui.chatbot.ChatActivity
 import com.agrivision.ui.detail.DetailActivity
 import com.agrivision.ui.weather.WeatherActivity
 import com.agrivision.utils.fetchLatestWeatherForecast
@@ -57,10 +61,9 @@ class HomeFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
-        val homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        val homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
-
         val artikelViewModel =
             ViewModelProvider(this).get(ArtikelViewModel::class.java)
 
@@ -69,6 +72,10 @@ class HomeFragment : Fragment() {
         homeViewModel.text.observe(viewLifecycleOwner) { }
 
         binding.btnCuacaFailed.setOnClickListener { (getMyLastLocation()) }
+
+//        binding.tvMore.setOnClickListener{
+//
+//            findNavController().navigate(R.id.action_navigation_home_to_navigation_artikel)}
 
         binding.btnPupuk.setOnClickListener {
             val intent = Intent(requireActivity(), FormFertilizerActivity::class.java)
@@ -80,20 +87,41 @@ class HomeFragment : Fragment() {
             startActivity(intent)
         }
 
+        binding.btnChat.setOnClickListener {
+            val intent = Intent(requireActivity(), ChatActivity::class.java)
+            startActivity(intent)
+        }
+
         rvTrick = binding.rvTrick
         rvTrick.setHasFixedSize(true)
         rvTrick.layoutManager = LinearLayoutManager(requireActivity())
         rvTrick.adapter = listArticleAdapter
         // Show the list of articles
 //        showRecyclerList()
+        binding.btnRetry.setOnClickListener {
+            artikelViewModel.getData()
+        }
 
-        artikelViewModel.articlesItem.observe(requireActivity()){articleList ->
+        artikelViewModel.articlesItem.observe(viewLifecycleOwner){articleList ->
             setArticlesData(articleList)
 
         }
 
-        artikelViewModel.isLoading.observe(requireActivity()) {
+        artikelViewModel.isLoading.observe(viewLifecycleOwner) {
             loading(it)
+        }
+
+        artikelViewModel.isRetry.observe(viewLifecycleOwner) {
+            retry(it)
+        }
+
+
+        artikelViewModel.isErr.observe(viewLifecycleOwner){
+            if (it == "no error" || it.isNullOrEmpty()) {
+                Log.d("fetch artikel","sukses coy")
+            } else {
+                Toast.makeText(requireActivity(), it, Toast.LENGTH_SHORT).show()
+            }
         }
 
         return binding.root
@@ -270,7 +298,14 @@ class HomeFragment : Fragment() {
             )
         }
     }
+    private fun retry(isRetry: Boolean) {
+        if (isRetry != false) {
+            binding.btnRetry.visibility = View.VISIBLE
 
+        } else {
+            binding.btnRetry.visibility = View.GONE
+        }
+    }
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

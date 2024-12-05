@@ -16,7 +16,7 @@
 
 
     <string name="go_to_register">Don\'t have an account? Register here</string>
-    <string name="email_or_username_hint">Enter your email or username</string>
+    <string name="email_or_username_hint">Masukkan Username atau Email</string>
 
 
     <string name="email_input_description">Email input field</string>
@@ -32,7 +32,7 @@
     <string name="register_link_text">Already have an account? Log in</string>
     -->
     <!-- Hint for password input field -->
-    <string name="password_hint">Enter your password</string>
+    <string name="password_hint">Masukkan kata sandi</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="label">Kandungan Nitrogen</string>
     <string name="labelfosfor">Kandungan Fosfor\n</string>
@@ -202,14 +202,13 @@
     Mohon maaf, kami tidak dapat memberikan rekomendasi pupuk berdasarkan data yang Anda masukkan.
 </string>
     <string name="profile_picture">Profile Pict\n</string>
-    <string name="login">Masuk\n</string>
+    <string name="login">Masuk</string>
     <string name="app_logo">App Logo\n</string>
-    <string name="username_hint">Username Hint\n</string>
-    <string name="nickname_hint">Nickname Hint\n</string>
+    <string name="username_hint">Username\n</string>
+    <string name="nickname_hint">Nama anda\n</string>
     <string name="email_or_username_input">Username Input\n</string>
     <string name="password_input">Passw input\n</string>
-    <string name="register_account">Register Account\n</string>
-    <string name="register_link_text">Regist ya\n</string>
-
+    <string name="register_account">Belum punya akun?\n</string>
+    <string name="register_link_text">Sudah punya akun?\n</string>
 
 </resources>

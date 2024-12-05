@@ -2,15 +2,16 @@ package com.agrivision.ui.oauth
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
+import com.agrivision.data.companion.VerifyRequest
+import com.agrivision.data.remote.retrofit.ApiConfig
 import com.agrivision.databinding.ActivityVerifyEmailBinding
-import com.example.agrivision.api.ConfigApi
-import com.example.agrivision.api.VerifyRequest
-import kotlinx.coroutines.Dispatchers
+import com.google.gson.JsonParser
+
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.withContext
 
 class VerifyEmailActivity : AppCompatActivity() {
 
@@ -22,8 +23,9 @@ class VerifyEmailActivity : AppCompatActivity() {
         binding = ActivityVerifyEmailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
         binding.btnVerify.setOnClickListener {
-            val verificationCode = binding.etVerificationCode.text.toString()
+            val verificationCode = binding.etVerificationCode.text.toString().uppercase()
 
             if (verificationCode.isNotEmpty()) {
                 verifyEmailCode(verificationCode)
@@ -34,21 +36,41 @@ class VerifyEmailActivity : AppCompatActivity() {
     }
 
     private fun verifyEmailCode(verificationCode: String) {
-        CoroutineScope(Dispatchers.Main).launch {
+        lifecycleScope.launch {
             try {
-                val username = intent.getStringExtra("username") ?: return@launch
-                val verifyRequest = VerifyEmailRequest(username, verificationCode)
+                val username = intent.getStringExtra("EXTRA_USERNAME")
 
-                val response = ConfigApi.apiService.verifyEmail(verifyRequest)
+                val verifyRequest = VerifyRequest(username, verificationCode)
+
+                val response = ApiConfig.getApiService().verifyEmail(verifyRequest)
 
                 if (response.isSuccessful) {
                     Toast.makeText(this@VerifyEmailActivity, "Verifikasi berhasil!", Toast.LENGTH_SHORT).show()
                     navigateToLogin()
                 } else {
-                    Toast.makeText(this@VerifyEmailActivity, "Kode verifikasi salah!", Toast.LENGTH_SHORT).show()
+                    val errorBody = response.errorBody ()?.string()
+                    errorBody?.let {
+                        try {
+                            val jsonObject =  JsonParser().parse(it).asJsonObject
+                            val errorMessage = jsonObject.get("error").asString
+                            Toast.makeText(
+                                this@VerifyEmailActivity,
+                                "Verifikasi gagal: $errorMessage",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        } catch (e: Exception) {
+                            Toast.makeText(
+                                this@VerifyEmailActivity,
+                                "Terjadi kesalahan: Registrasi gagal",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    }
+
                 }
             } catch (e: Exception) {
-                Toast.makeText(this@VerifyEmailActivity, "Terjadi kesalahan: ${e.message}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@VerifyEmailActivity, "Cek koneksi internet", Toast.LENGTH_SHORT).show()
+                Log.e( "gagal verf","Terjadi kesalahan: ${e.message}")
             }
         }
     }

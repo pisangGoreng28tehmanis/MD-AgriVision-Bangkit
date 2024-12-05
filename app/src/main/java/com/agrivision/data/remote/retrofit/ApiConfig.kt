@@ -1,4 +1,4 @@
-package com.agrivision.data.retrofit
+package com.agrivision.data.remote.retrofit
 
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

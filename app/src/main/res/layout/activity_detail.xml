@@ -28,7 +28,6 @@
                 android:layout_height="350dp"
                 android:contentDescription="Gambar Header"
                 android:scaleType="centerCrop"
-                android:src="@drawable/ic_placeholder"
                 app:shapeAppearanceOverlay="@style/RoundedBottomImage" />
 
             <TextView
@@ -80,41 +79,13 @@
                 android:lineSpacingExtra="4dp"
                 android:text="Deskripsi lengkap artikel akan ditampilkan di sini."
                 android:textSize="16sp" />
+
         </LinearLayout>
     </ScrollView>
 
     <!-- Tombol share -->
 
     <!-- Tombol favourite atau love -->
-
-    <ImageButton
-        android:id="@+id/btn_share"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_margin="16dp"
-        android:layout_marginTop="176dp"
-        android:layout_marginEnd="32dp"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:contentDescription="Bagikan"
-        android:src="@drawable/ic_share"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/img_header"
-        app:tint="@color/white"
-        tools:ignore="TouchTargetSizeCheck" />
-
-    <ImageButton
-        android:id="@+id/btn_favourite"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_margin="16dp"
-        android:layout_marginEnd="8dp"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:contentDescription="Favoritkan"
-        android:src="@drawable/ic_favorite_border"
-        app:layout_constraintEnd_toStartOf="@id/btn_share"
-        app:layout_constraintTop_toTopOf="@id/img_header"
-        app:tint="@color/white"
-        tools:ignore="TouchTargetSizeCheck" />
 
     <!-- TextView untuk judul -->
 
@@ -126,7 +97,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:indeterminateTint="@color/md_theme_primary_highContrast"
-        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_retry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Coba muat ulang"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

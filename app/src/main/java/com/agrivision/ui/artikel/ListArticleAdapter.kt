@@ -9,8 +9,8 @@ import android.widget.TextView
 import androidx.core.text.HtmlCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.agrivision.R
-import com.agrivision.data.response.ArticleResponse
-import com.agrivision.data.response.ArticleResponseItem
+import com.agrivision.data.remote.response.ArticleResponse
+import com.agrivision.data.remote.response.ArticleResponseItem
 import com.agrivision.databinding.ItemArticleBinding
 import com.agrivision.ui.detail.DetailActivity
 import com.bumptech.glide.Glide
@@ -19,7 +19,7 @@ class ListArticleAdapter(val listArticle: ArrayList<ArticleResponseItem>) : Recy
 
 
     class ListViewHolder(private var binding: ItemArticleBinding) : RecyclerView.ViewHolder(binding.root){
-        fun bind (articles:ArticleResponseItem){
+        fun bind (articles: ArticleResponseItem){
            articles.jsonMember5ImageURL.let {
                 Glide.with(binding.imgItemPhoto.context)
                     .load(it)

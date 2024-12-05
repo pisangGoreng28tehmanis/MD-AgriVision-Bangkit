@@ -40,7 +40,7 @@
                 android:id="@+id/inputTextNitrogen"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text" />
+                android:inputType="number" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -55,7 +55,7 @@
                 android:id="@+id/inputTextFosfor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text" />
+                android:inputType="number" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -85,7 +85,7 @@
                 android:id="@+id/inputTextKalium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text" />
+                android:inputType="number" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -100,7 +100,7 @@
                 android:id="@+id/inputTextTemperature"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text" />
+                android:inputType="number" />
 
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
@@ -126,7 +126,7 @@
                 android:id="@+id/inputTextKelembapan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text" />
+                android:inputType="number"  />
 
         </com.google.android.material.textfield.TextInputLayout>
 

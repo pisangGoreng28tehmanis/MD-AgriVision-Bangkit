@@ -12,13 +12,9 @@
         android:icon="@drawable/ic_dashboard_black_24dp"
         android:title="@string/title_artikel" />
 
-    <item
-        android:id="@+id/navigation_riwayat"
-        android:icon="@drawable/ic_history"
-        android:title="@string/title_riwayat"/>
 
     <item
         android:id="@+id/navigation_profile"
         android:icon="@drawable/ic_accprofile"
-        android:title="@string/title_riwayat"/>
+        android:title="Profil"/>
 </menu>

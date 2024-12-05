@@ -40,6 +40,7 @@ android {
 }
 
 dependencies {
+    implementation ("androidx.datastore:datastore-preferences:1.0.0")
     implementation("com.google.android.gms:play-services-maps:18.2.0")
     implementation("com.google.android.gms:play-services-location:21.2.0")
     implementation("androidx.viewpager2:viewpager2:1.0.0")

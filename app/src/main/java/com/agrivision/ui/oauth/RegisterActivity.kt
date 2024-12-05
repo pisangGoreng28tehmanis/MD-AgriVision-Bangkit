@@ -3,19 +3,13 @@ package com.agrivision.ui.oauth
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.agrivision.R
+import androidx.lifecycle.lifecycleScope
+import com.agrivision.data.companion.RegisterRequest
+import com.agrivision.data.remote.retrofit.ApiConfig
 import com.agrivision.databinding.ActivityRegisterBinding
-import com.example.agrivision.api.ConfigApi
-import com.example.agrivision.api.RegisterRequest
-import com.example.agrivision.api.ApiResponse
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.google.gson.JsonParser
 import kotlinx.coroutines.*
 
 class RegisterActivity : AppCompatActivity() {
@@ -36,6 +30,7 @@ class RegisterActivity : AppCompatActivity() {
             // Logic to navigate to RegisterActivity or perform the intended action
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
         // Set onClickListener for the register button using view binding
@@ -56,23 +51,43 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun registerUser(email: String, username: String, password: String, nickname: String) {
         // Use CoroutineScope for network calls
-        CoroutineScope(Dispatchers.Main).launch {
+        lifecycleScope.launch {
             try {
-                val apiService = ConfigApi.apiService
+                val apiService = ApiConfig.getApiService()
                 val registerRequest = RegisterRequest(email, username, password, nickname)
 
-                // Call the suspend function from the apiService
                 val response = apiService.registerUser(registerRequest)
 
                 if (response.isSuccessful) {
-                    Toast.makeText(this@RegisterActivity, "Registrasi berhasil! Silakan verifikasi email Anda.", Toast.LENGTH_SHORT).show()
-                    // Navigate to email verification screen
+//                    Toast.makeText(this@RegisterActivity, "Registrasi berhasil! Silakan verifikasi email Anda.", Toast.LENGTH_SHORT).show()
+
+                    val intent = Intent(this@RegisterActivity, VerifyEmailActivity::class.java)
+                    intent.putExtra("EXTRA_USERNAME",username)
+                    startActivity(intent)
+                    finish()
                 } else {
-                    Log.e("RegisterError", "Error Code: ${response.code()} Message: ${response.message()}")
-                    Toast.makeText(this@RegisterActivity, "Registrasi gagal: ${response.code()} ${response.message()}", Toast.LENGTH_SHORT).show()
+                    val errorBody = response.errorBody ()?.string()
+                    errorBody?.let {
+                        try {
+                            val jsonObject =  JsonParser().parse(it).asJsonObject
+                            val errorMessage = jsonObject.get("error").asString
+                            Toast.makeText(
+                                this@RegisterActivity,
+                                "Registrasi gagal: $errorMessage",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        } catch (e: Exception) {
+                            Toast.makeText(
+                                this@RegisterActivity,
+                                "Terjadi kesalahan: Registrasi gagal",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    }
                 }
             } catch (e: Exception) {
-                Toast.makeText(this@RegisterActivity, "Terjadi kesalahan: ${e.message}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@RegisterActivity, "Cek koneksi internet anda", Toast.LENGTH_SHORT).show()
+                Log.e("fail register","Terjadi kesalahan: ${e.message}")
             }
         }
     }

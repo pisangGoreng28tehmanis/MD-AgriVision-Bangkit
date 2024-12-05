@@ -1,4 +1,4 @@
-package com.agrivision.ui.riwayat
+package com.agrivision.data.companion
 
 data class Riwayat(
     val tanggal: String,

@@ -1,13 +1,17 @@
-package com.agrivision.data.retrofit
+package com.agrivision.data.remote.retrofit
 
-import com.agrivision.data.FertilizerData
-import com.agrivision.data.request.ChatbotRequest
-import com.agrivision.data.response.*
-import com.example.agrivision.api.ApiResponse
-import com.example.agrivision.api.LoginRequest
-import com.example.agrivision.api.LoginResponse
-import com.example.agrivision.api.RegisterRequest
-import com.example.agrivision.api.VerifyRequest
+import com.agrivision.data.companion.FertilizerData
+import com.agrivision.data.companion.LoginRequest
+import com.agrivision.data.companion.RegisterRequest
+import com.agrivision.data.companion.VerifyRequest
+import com.agrivision.data.companion.message
+import com.agrivision.data.remote.response.ArticleResponseItem
+import com.agrivision.data.remote.response.ChatResponse
+import com.agrivision.data.remote.response.FertilizerPrediction
+import com.agrivision.data.remote.response.LoginResponse
+import com.agrivision.data.remote.response.RegisterResponse
+import com.agrivision.data.remote.response.ResponseCCWeather
+import com.agrivision.data.remote.response.Token
 import retrofit2.Response
 import retrofit2.http.*
 
@@ -35,6 +39,11 @@ interface ApiService {
     @GET("articles/all")
     suspend fun getArticles(): Response<List<ArticleResponseItem>>
 
+    @POST("chatbot")
+    suspend fun getChatResponse(
+        @Body message: message
+    ): Response<ChatResponse>
+
     @GET("articles/{id}")
     suspend fun getArticlesDetail(
         @Path("id") id: String
@@ -44,13 +53,13 @@ interface ApiService {
     @POST("users/register")
     suspend fun registerUser(
         @Body body: RegisterRequest
-    ): Response<ApiResponse>
+    ): Response<RegisterResponse>
 
     // Verify Email
     @POST("users/verify-email")
     suspend fun verifyEmail(
         @Body body: VerifyRequest
-    ): Response<ApiResponse>
+    ): Response<RegisterResponse>
 
     // Login
     @POST("users/login")
@@ -59,8 +68,4 @@ interface ApiService {
     ): Response<LoginResponse>
 
     // Chatbot
-    @POST("users/chatbot")
-    suspend fun askChatbot(
-        @Body body: ChatbotRequest
-    ): Response<ChatbotResponse>
 }
