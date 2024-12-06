@@ -2,6 +2,7 @@ package com.agrivision.ui.oauth
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
@@ -11,6 +12,7 @@ import com.agrivision.data.local.DataStoreManager
 import com.agrivision.data.remote.response.LoginResponse
 import com.agrivision.data.remote.retrofit.ApiConfig
 import com.agrivision.databinding.ActivityLoginBinding
+import com.google.gson.JsonParser
 import kotlinx.coroutines.launch
 import retrofit2.Response
 
@@ -50,6 +52,12 @@ class LoginActivity : AppCompatActivity() {
 
     private fun loginUser(emailOrUsername: String, password: String) {
         val dataStoreManager = DataStoreManager(this)
+        binding.progressBar.visibility = View.VISIBLE
+        binding.btnLogin.visibility = View.GONE
+        binding.logoImageView.visibility = View.GONE
+        binding.linkToRegister.visibility = View.GONE
+        binding.emailInputLayout.visibility = View.GONE
+        binding.passwordInputLayout.visibility = View.GONE
         lifecycleScope.launch {
             try {
                 // Perform the suspend function directly in the coroutine scope
@@ -66,11 +74,30 @@ class LoginActivity : AppCompatActivity() {
                     startActivity(intent)
                     finish()
                 } else {
-                    Toast.makeText(this@LoginActivity, "Login gagal: ${response.message()}", Toast.LENGTH_SHORT).show()
+                    val error = response.errorBody()?.string()
+                    error?.let {
+                        try {
+                            val jsonObject =  JsonParser().parse(it).asJsonObject
+                            val errorMessage = jsonObject.get("error").asString
+                            Toast.makeText(this@LoginActivity, "Login gagal: $errorMessage", Toast.LENGTH_SHORT).show()
+                        } catch (e: Exception) {
+                            Toast.makeText(
+                                this@LoginActivity,
+                                "Terjadi kesalahan: Login gagal",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    }
                 }
             } catch (e: Exception) {
-                // Handle network errors
-                Toast.makeText(this@LoginActivity, "Terjadi kesalahan: ${e.message}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@LoginActivity, "Tidak ada koneksi internet", Toast.LENGTH_SHORT).show()
+            } finally {
+                binding.progressBar.visibility = View.GONE
+                binding.btnLogin.visibility = View.VISIBLE
+                binding.logoImageView.visibility = View.VISIBLE
+                binding.linkToRegister.visibility = View.VISIBLE
+                binding.emailInputLayout.visibility = View.VISIBLE
+                binding.passwordInputLayout.visibility = View.VISIBLE
             }
         }
     }

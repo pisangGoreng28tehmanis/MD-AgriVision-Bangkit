@@ -10,6 +10,7 @@ import androidx.lifecycle.lifecycleScope
 import com.agrivision.MainActivity
 import com.agrivision.R
 import com.agrivision.data.local.DataStoreManager
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class LoadingActivity : AppCompatActivity() {
@@ -33,10 +34,12 @@ class LoadingActivity : AppCompatActivity() {
             dataStoreManager.username.collect { username ->
                 if (username.isNullOrEmpty()) {
                     val intent = Intent(this@LoadingActivity, LoginActivity::class.java)
+                    delay(1500L)
                     startActivity(intent)
                     finish()
                 } else {
                     val intent = Intent(this@LoadingActivity, MainActivity::class.java)
+                    delay(1000L)
                     startActivity(intent)
                     finish()
                 }

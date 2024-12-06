@@ -3,6 +3,7 @@ package com.agrivision.ui.oauth
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
@@ -50,7 +51,14 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun registerUser(email: String, username: String, password: String, nickname: String) {
-        // Use CoroutineScope for network calls
+        binding.progressBar.visibility = View.VISIBLE
+        binding.btnRegister.visibility = View.GONE
+        binding.logoImageView.visibility = View.GONE
+        binding.linkToLogin.visibility = View.GONE
+        binding.emailInputLayout.visibility = View.GONE
+        binding.nicknameInputLayout.visibility = View.GONE
+        binding.usernameInputLayout.visibility = View.GONE
+        binding.passwordInputLayout.visibility = View.GONE
         lifecycleScope.launch {
             try {
                 val apiService = ApiConfig.getApiService()
@@ -88,6 +96,15 @@ class RegisterActivity : AppCompatActivity() {
             } catch (e: Exception) {
                 Toast.makeText(this@RegisterActivity, "Cek koneksi internet anda", Toast.LENGTH_SHORT).show()
                 Log.e("fail register","Terjadi kesalahan: ${e.message}")
+            } finally {
+                binding.progressBar.visibility = View.GONE
+                binding.btnRegister.visibility = View.VISIBLE
+                binding.logoImageView.visibility = View.VISIBLE
+                binding.linkToLogin.visibility = View.VISIBLE
+                binding.emailInputLayout.visibility = View.VISIBLE
+                binding.nicknameInputLayout.visibility = View.VISIBLE
+                binding.usernameInputLayout.visibility = View.VISIBLE
+                binding.passwordInputLayout.visibility = View.VISIBLE
             }
         }
     }
