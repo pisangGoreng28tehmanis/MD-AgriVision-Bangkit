@@ -22,16 +22,7 @@
             android:textColor="@color/md_theme_inverseSurface_highContrast"
             android:textSize="22sp"
             android:textStyle="italic" />
-        <TextView
-            android:id="@+id/tv_username"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="40dp"
-            android:textColor="@color/md_theme_inverseSurface_highContrast"
-            android:textSize="22sp"
-            android:textStyle="italic"
-            android:hint="usernem"/>
+
 
     </LinearLayout>
 
