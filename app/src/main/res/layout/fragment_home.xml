@@ -5,24 +5,38 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/agricolor"
     tools:context=".ui.home.HomeFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/tv_welcome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="40dp"
-            android:text="Welcome To AgriVision"
-            android:textColor="@color/md_theme_inverseSurface_highContrast"
-            android:textSize="22sp"
-            android:textStyle="italic" />
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            android:text="Welcome To AgriVision,"
+            android:textColor="@color/agritextwhite"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/dm_sans"/>
 
+        <TextView
+            android:id="@+id/tv_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="5dp"
+            android:text="username"
+            android:textColor="@color/agritextwhite"
+            android:textSize="22sp"
+            android:textStyle="normal"
+            android:fontFamily="@font/dm_sans"/>
+        <!--        nanti ganti jadi android:hint untuk yang username-->
 
     </LinearLayout>
 
@@ -30,23 +44,25 @@
         android:id="@+id/tv_cuaca"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="30dp"
         android:text="Prakiraan cuaca"
-        android:textColor="@color/md_theme_inverseSurface_highContrast"
-        android:textSize="16sp" />
+        android:textColor="@color/agritextwhite"
+        android:textSize="16sp"
+        android:fontFamily="@font/dm_sans"/>
 
     <FrameLayout
         android:id="@+id/fl_cuaca"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:background="@drawable/cuaca_background"
         android:layout_marginTop="5dp">
         <Button
             android:id="@+id/btnCuaca"
             android:layout_width="340dp"
             android:layout_height="130dp"
-            android:background="@drawable/cuaca_background"
+            android:background="@color/transparant"
             android:padding="10dp"
             android:visibility="gone"/>
 
@@ -54,7 +70,7 @@
             android:id="@+id/btnCuacaFailed"
             android:layout_width="340dp"
             android:layout_height="130dp"
-            android:background="@drawable/cuaca_background"
+            android:background="@color/transparant"
             android:padding="10dp"
             android:visibility="visible" />
 
@@ -70,7 +86,7 @@
                 android:id="@+id/tvLoading"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/md_theme_inverseOnSurface_highContrast"
+                android:textColor="@color/agritextblack"
                 android:textSize="18sp"
                 android:textStyle="italic"
                 android:gravity="center"
@@ -81,7 +97,7 @@
                 style="?android:attr/progressBarStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:indeterminateTint="@color/md_theme_onPrimaryContainer_highContrast"/>
+                android:indeterminateTint="@color/agritextblack"/>
 
         </LinearLayout>
 
@@ -97,7 +113,7 @@
                 android:id="@+id/tvFailed"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/md_theme_inverseOnSurface_highContrast"
+                android:textColor="@color/agritextblack"
                 android:textSize="18sp"
                 android:textStyle="italic"
                 android:gravity="center"
@@ -107,7 +123,7 @@
                 android:id="@+id/tvRetry"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/md_theme_inverseOnSurface_highContrast"
+                android:textColor="@color/agritextblack"
                 android:layout_marginTop="10dp"
                 android:textSize="16sp"
                 android:textStyle="bold"
@@ -135,7 +151,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginTop="20dp"
-                android:textColor="@color/md_theme_inverseOnSurface_highContrast"
+                android:textColor="@color/agritextblack"
                 android:textSize="14sp"
                 android:textStyle="italic"
                 tools:text="Jakarta, ID" />
@@ -164,7 +180,7 @@
                         android:id="@+id/tvTemperature"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/md_theme_inverseOnSurface_highContrast"
+                        android:textColor="@color/agritextblack"
                         android:textSize="34dp"
                         tools:text="30°C" />
 
@@ -178,15 +194,22 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="5dp"
-                            android:textColor="@color/md_theme_inverseOnSurface_highContrast"
+                            android:textColor="@color/agritextblack"
                             android:textSize="16sp"
                             tools:text="Cerah Berawan" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="5dp"
+                            android:textColor="@color/agritextblack"
+                            android:textSize="16sp"
+                            android:text="| Kelembapan"/>
 
                         <TextView
                             android:id="@+id/tvHumidity"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/md_theme_inverseOnSurface_highContrast"
+                            android:textColor="@color/agritextblack"
                             android:textSize="14sp"
                             tools:text="100" />
 
@@ -204,60 +227,68 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
         android:layout_marginTop="10dp"
         android:orientation="horizontal">
 
-        <FrameLayout
+        <LinearLayout
             android:id="@+id/fl_chat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="168dp"
+            android:layout_height="128dp"
             android:layout_gravity="center"
-            android:layout_weight="1">
+            android:orientation="vertical"
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/button_background">
             <ImageButton
                 android:id="@+id/btn_chat"
-                android:layout_width="168dp"
-                android:layout_height="128dp"
-                android:background="@drawable/button_background"
-                android:padding="10dp"
-                android:src="@drawable/ic_chat" />
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:paddingTop="20dp"
+                android:layout_weight="2"
+                android:background="@color/transparant"
+                android:src="@drawable/farmer" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="45dp"
-                android:text="Tanya bot kami"
-                android:textColor="@color/md_theme_inverseSurface_highContrast" />
-            />
-        </FrameLayout>
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:textAlignment="center"
+                android:paddingTop="10dp"
+                android:textSize="14sp"
+                android:fontFamily="@font/dm_sans"
+                android:text="Tanya Agrimin"
+                android:textColor="@color/agritextblack" />
+        </LinearLayout>
 
-        <FrameLayout
+        <LinearLayout
             android:id="@+id/fl_pupuk"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="168dp"
+            android:layout_height="128dp"
             android:layout_gravity="center"
-            android:layout_weight="1"
-            android:layout_marginStart="10dp">
+            android:orientation="vertical"
+            android:layout_marginStart="5dp"
+            android:background="@drawable/button_background">
 
             <ImageButton
                 android:id="@+id/btn_pupuk"
-                android:layout_width="168dp"
-                android:layout_height="128dp"
-                android:background="@drawable/button_background"
-                android:padding="10dp"
-                android:src="@drawable/ic_search" />
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:paddingTop="20dp"
+                android:layout_weight="2"
+                android:background="@color/transparant"
+                android:src="@drawable/fertilizer" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="45dp"
-                android:text="Kalkulator Pupuk"
-                android:textColor="@color/md_theme_inverseSurface_highContrast" />
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:textAlignment="center"
+                android:paddingTop="10dp"
+                android:textSize="14sp"
+                android:fontFamily="@font/dm_sans"
+                android:text="Cek Pupuk"
+                android:textColor="@color/agritextblack" />
             />
-        </FrameLayout>
+        </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
@@ -269,10 +300,10 @@
             android:id="@+id/tv_trik"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="16dp"
             android:text="Tips &amp; Trik"
-            android:textColor="@color/md_theme_inverseSurface_highContrast"
+            android:textColor="@color/agritextwhite"
             android:textSize="13sp"/>
 <!--        <TextView-->
 <!--            android:id="@+id/tv_more"-->
@@ -312,11 +343,11 @@
             android:id="@+id/rvTrick"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="120dp"
-            android:layout_marginStart="10dp"
+            android:paddingBottom="10dp"
+            android:layout_marginStart="28dp"
             android:layout_marginTop="5dp"
-            android:layout_marginEnd="10dp">
-        </androidx.recyclerview.widget.RecyclerView>
+            android:layout_marginEnd="28dp">
+    </androidx.recyclerview.widget.RecyclerView>
 
 
 

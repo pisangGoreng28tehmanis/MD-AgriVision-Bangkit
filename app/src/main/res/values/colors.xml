@@ -145,4 +145,9 @@
     <color name="white">#FFFFFF</color>
     <color name="grey">#5D5D5D</color>
     <color name="colorAccent">#737373</color>
+    <color name="agricolor">#1D4C43</color>
+    <color name="agritextwhite">#FFFEFE</color>
+    <color name="agritextblack">#1A1A19</color>
+    <color name="transparant">#00FFFFFF</color>
+    <color name="black90">#E6060606</color>
 </resources>
