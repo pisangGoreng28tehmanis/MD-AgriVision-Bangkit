@@ -149,5 +149,9 @@
     <color name="agritextwhite">#FFFEFE</color>
     <color name="agritextblack">#1A1A19</color>
     <color name="transparant">#00FFFFFF</color>
-    <color name="black90">#E6060606</color>
+    <color name="black90">#060606</color>
+    <color name="red">#F60D0D</color>
+    <color name="selected_color">#FFFFFF</color>
+    <color name="unselected_color">#FFFFFF</color>
+    <color name="transparent">#00FFFFFF</color>
 </resources>

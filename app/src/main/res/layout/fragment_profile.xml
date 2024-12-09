@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/agricolor"
     tools:context=".ProfileFragment">
 
     <!-- Profile Picture -->
@@ -28,8 +29,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="John Doe"
-        android:textColor="?attr/colorOnSurface"
-        android:textSize="18sp"
+        android:textColor="@color/agritextwhite"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

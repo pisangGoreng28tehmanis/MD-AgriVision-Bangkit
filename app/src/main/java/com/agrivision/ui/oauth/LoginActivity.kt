@@ -60,17 +60,18 @@ class LoginActivity : AppCompatActivity() {
         binding.passwordInputLayout.visibility = View.GONE
         lifecycleScope.launch {
             try {
-                // Perform the suspend function directly in the coroutine scope
-                val response: Response<LoginResponse> = ApiConfig.getApiService().loginUser(
+                val response = ApiConfig.getApiService().loginUser(
                     LoginRequest(emailOrUsername, password)
                 )
 
                 if (response.isSuccessful) {
-                    val username = emailOrUsername
-                    dataStoreManager.saveUsername(username)
+                    val nickname = response.body()?.nickname
+                    if (nickname != null) {
+                        dataStoreManager.saveUsername(nickname)
+                    }
                     Toast.makeText(this@LoginActivity, "Login berhasil!", Toast.LENGTH_SHORT).show()
                     val intent = Intent(this@LoginActivity,MainActivity::class.java)
-                    intent.putExtra("EXTRA_USERNAME", username)
+                    intent.putExtra("EXTRA_USERNAME", nickname)
                     startActivity(intent)
                     finish()
                 } else {

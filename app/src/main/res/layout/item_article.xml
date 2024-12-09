@@ -6,9 +6,7 @@
     android:id="@+id/card_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="8dp"
     android:layout_marginTop="4dp"
-    android:layout_marginEnd="8dp"
     android:layout_marginBottom="4dp"
     card_view:cardCornerRadius="10dp">
 
@@ -16,7 +14,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/button_background">
+        android:background="@color/agritextwhite">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_img"
@@ -51,9 +49,9 @@
             android:id="@+id/tv_item_author"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="10dp"
             android:gravity="fill"
             android:textColor="@color/agritextblack"
             android:textSize="12sp"
@@ -68,10 +66,10 @@
             android:id="@+id/tv_item_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="24dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="15dp"
             android:ellipsize="end"
             android:gravity="fill"
             android:maxLines="5"

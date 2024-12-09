@@ -14,7 +14,6 @@ import com.agrivision.ui.oauth.LoginActivity
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
@@ -34,10 +33,31 @@ class MainActivity : AppCompatActivity() {
             binding.navView.setOnApplyWindowInsetsListener(null)
             binding.navView.setPadding(0, 0, 0, 0)
             navView.setupWithNavController(navController)
+        // Listener untuk mengganti ikon saat halaman aktif
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.navigation_home -> {
+                    // Mengubah ikon menjadi filled ketika di halaman Home
+                    navView.menu.findItem(R.id.navigation_home).setIcon(R.drawable.home_filled)
+                    navView.menu.findItem(R.id.navigation_artikel).setIcon(R.drawable.article_outline)
+                    navView.menu.findItem(R.id.navigation_profile).setIcon(R.drawable.person_outline)
+                }
+                R.id.navigation_artikel -> {
+                    // Mengubah ikon menjadi filled ketika di halaman Artikel
+                    navView.menu.findItem(R.id.navigation_home).setIcon(R.drawable.home_outline)
+                    navView.menu.findItem(R.id.navigation_artikel).setIcon(R.drawable.article_filled)
+                    navView.menu.findItem(R.id.navigation_profile).setIcon(R.drawable.person_outline)
+                }
+                R.id.navigation_profile -> {
+                    // Mengubah ikon menjadi filled ketika di halaman Profil
+                    navView.menu.findItem(R.id.navigation_home).setIcon(R.drawable.home_outline)
+                    navView.menu.findItem(R.id.navigation_artikel).setIcon(R.drawable.article_outline)
+                    navView.menu.findItem(R.id.navigation_profile).setIcon(R.drawable.person_filled)
+                }
+            }
         }
-
-
     }
+}
 
 
 

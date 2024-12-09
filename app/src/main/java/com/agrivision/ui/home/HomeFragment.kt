@@ -25,6 +25,7 @@ import com.agrivision.R
 import com.agrivision.data.local.DataStoreManager
 import com.agrivision.data.remote.response.ArticleResponseItem
 import com.agrivision.databinding.FragmentHomeBinding
+import com.agrivision.databinding.FragmentProfileBinding
 import com.agrivision.ui.artikel.ArtikelFragment
 import com.agrivision.ui.artikel.ArtikelViewModel
 import com.agrivision.ui.fertilizerpredict.FormFertilizerActivity
@@ -42,8 +43,7 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var rvTrick: RecyclerView
     private val listArticleAdapter = ListArticleAdapter(arrayListOf())
-
-    // Permission request launcher
+    private lateinit var dataStoreManager : DataStoreManager
     private val requestPermissionLauncher = registerForActivityResult(
         ActivityResultContracts.RequestMultiplePermissions()
     ) { permissions ->
@@ -62,6 +62,12 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        dataStoreManager = DataStoreManager(requireActivity())
+        lifecycleScope.launch {
+            dataStoreManager.username.collect { username ->
+                binding.tvUsername.text = username
+            }
+        }
         val homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
         val artikelViewModel =

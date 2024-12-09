@@ -108,9 +108,18 @@ data class Reply(
 )
 
 data class LoginResponse(
-	val token: String,
+
+	@field:SerializedName("nickname")
+	val nickname: String,
+
+	@field:SerializedName("message")
 	val message: String,
-	val status: Int
+
+	@field:SerializedName("email")
+	val email: String,
+
+	@field:SerializedName("username")
+	val username: String
 )
 
 data class RegisterResponse(

@@ -11,7 +11,7 @@
     <string name="email_hint">Email</string>
     <!--<string name="password_hint">Password</string>-->
     <string name="dob_hint">Date of Birth</string>
-    <string name="register">Register</string>
+    <string name="register">Daftar</string>
     <string name="back_to_login">Back to Login</string>
 
 
@@ -208,7 +208,8 @@
     <string name="nickname_hint">Nama anda\n</string>
     <string name="email_or_username_input">Username Input\n</string>
     <string name="password_input">Passw input\n</string>
-    <string name="register_account">Belum punya akun?\n</string>
-    <string name="register_link_text">Sudah punya akun?\n</string>
+    <string name="register_account">Belum punya akun? Daftar\n</string>
+    <string name="register_link_text">Sudah punya akun? Masuk\n</string>
+    <string name="username">username</string>
 
 </resources>
