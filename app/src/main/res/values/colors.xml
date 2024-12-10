@@ -154,4 +154,5 @@
     <color name="selected_color">#FFFFFF</color>
     <color name="unselected_color">#FFFFFF</color>
     <color name="transparent">#00FFFFFF</color>
+    <color name="btnLogin">#57A773</color>
 </resources>
