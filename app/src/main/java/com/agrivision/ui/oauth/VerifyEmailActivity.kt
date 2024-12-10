@@ -78,6 +78,6 @@ class VerifyEmailActivity : AppCompatActivity() {
     private fun navigateToLogin() {
         val intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)
-        finish()  // Menutup VerifyEmailActivity
+        finish()
     }
 }

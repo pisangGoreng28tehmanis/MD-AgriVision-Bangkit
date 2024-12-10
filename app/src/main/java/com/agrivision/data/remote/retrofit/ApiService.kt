@@ -17,25 +17,24 @@ import retrofit2.http.*
 
 interface ApiService {
 
-    // Weather Forecast
     @GET("weather/forecast")
     suspend fun getWeatherForecast(
         @Query("lat") latitude: Double,
         @Query("lon") longitude: Double
     ): Response<ResponseCCWeather>
 
-    // Token
+
     @POST("/token")
     suspend fun getToken(): Response<Token>
 
-    // Fertilizer Prediction
+
     @POST("/kalkulator-pupuk")
     suspend fun getFertilizerPred(
         @Header("Authorization") accessToken: String,
         @Body fertilizerBody: FertilizerData
     ): Response<FertilizerPrediction>
 
-    // Articles
+
     @GET("articles/all")
     suspend fun getArticles(): Response<List<ArticleResponseItem>>
 
@@ -49,23 +48,23 @@ interface ApiService {
         @Path("id") id: String
     ): Response<ArticleResponseItem>
 
-    // Register
+
     @POST("users/register")
     suspend fun registerUser(
         @Body body: RegisterRequest
     ): Response<RegisterResponse>
 
-    // Verify Email
+
     @POST("users/verify-email")
     suspend fun verifyEmail(
         @Body body: VerifyRequest
     ): Response<RegisterResponse>
 
-    // Login
+
     @POST("users/login")
     suspend fun loginUser(
         @Body body: LoginRequest
     ): Response<LoginResponse>
 
-    // Chatbot
+
 }

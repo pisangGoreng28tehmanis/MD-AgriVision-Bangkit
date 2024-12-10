@@ -7,7 +7,6 @@
     android:padding="16dp"
     tools:context=".ui.oauth.LoginActivity">
 
-    <!-- Logo ImageView -->
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/logoImageView"
         android:layout_width="180dp"
@@ -20,7 +19,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full" />
 
-    <!-- Email/Username Input -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/emailInputLayout"
         android:layout_width="0dp"
@@ -39,7 +37,6 @@
             android:inputType="text" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- Password Input -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/passwordInputLayout"
         android:layout_width="0dp"
@@ -58,19 +55,16 @@
             android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- Login Button -->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnLogin"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:onClick="onLoginClick"
         android:text="@string/login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/passwordInputLayout" />
 
-    <!-- Link to Register Activity -->
     <TextView
         android:id="@+id/linkToRegister"
         android:layout_width="wrap_content"
@@ -78,7 +72,6 @@
         android:layout_marginTop="16dp"
         android:clickable="true"
         android:focusable="true"
-        android:onClick="onRegisterLinkClick"
         android:text="@string/register_account"
         android:textColor="@color/md_theme_secondary"
         app:layout_constraintEnd_toEndOf="parent"

@@ -60,14 +60,9 @@ class HomeFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         dataStoreManager = DataStoreManager(requireActivity())
-        lifecycleScope.launch {
-            dataStoreManager.username.collect { username ->
-                binding.tvUsername.text = username
-            }
-        }
         val homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
         val artikelViewModel =
@@ -78,10 +73,6 @@ class HomeFragment : Fragment() {
         homeViewModel.text.observe(viewLifecycleOwner) { }
 
         binding.btnCuacaFailed.setOnClickListener { (getMyLastLocation()) }
-
-//        binding.tvMore.setOnClickListener{
-//
-//            findNavController().navigate(R.id.action_navigation_home_to_navigation_artikel)}
 
         binding.btnPupuk.setOnClickListener {
             val intent = Intent(requireActivity(), FormFertilizerActivity::class.java)
@@ -102,8 +93,6 @@ class HomeFragment : Fragment() {
         rvTrick.setHasFixedSize(true)
         rvTrick.layoutManager = LinearLayoutManager(requireActivity())
         rvTrick.adapter = listArticleAdapter
-        // Show the list of articles
-//        showRecyclerList()
         binding.btnRetry.setOnClickListener {
             artikelViewModel.getData()
         }
@@ -133,9 +122,6 @@ class HomeFragment : Fragment() {
         return binding.root
     }
 
-//    private fun getListArticle(): ArrayList<ArticleResponseItem> {
-//
-//    }
 
     fun loading(isLoading: Boolean) {
         if (isLoading != false) {
@@ -151,33 +137,6 @@ class HomeFragment : Fragment() {
             notifyDataSetChanged()
         }
     }
-
-//    private fun getListTrick(): ArrayList<News> {
-//        val dataName = resources.getStringArray(R.array.data_name)
-//        val dataDescription = resources.getStringArray(R.array.data_description)
-//        val dataPhoto = resources.obtainTypedArray(R.array.data_photo)
-//        val listHero = ArrayList<News>()
-//        for (i in dataName.indices) {
-//            val hero = News(dataName[i], dataDescription[i], dataPhoto.getResourceId(i, -1))
-//            listHero.add(hero)
-//        }
-//        return listHero
-//    }
-
-//    fun showRecyclerList() {
-//        val list = getListTrick()
-//        rvTrick.layoutManager = LinearLayoutManager(context)
-//        val listArticleAdapter = ListArticleAdapter(list)
-//        rvTrick.adapter = listArticleAdapter
-//        listArticleAdapter.onItemClick = { news ->
-//            val intent = Intent(context, DetailActivity::class.java).apply {
-//                putExtra("EXTRA_NAME", news.name)
-//                putExtra("EXTRA_DESCRIPTION", news.description)
-//                putExtra("EXTRA_PHOTO", news.photo)
-//            }
-//            startActivity(intent)
-//        }
-//    }
 
     private fun checkPermission(permission: String): Boolean {
         return ContextCompat.checkSelfPermission(requireActivity(), permission) == PackageManager.PERMISSION_GRANTED

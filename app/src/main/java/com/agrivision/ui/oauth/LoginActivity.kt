@@ -41,7 +41,6 @@ class LoginActivity : AppCompatActivity() {
     }
 
     fun onRegisterLinkClick() {
-        // Navigate to RegisterActivity
         val intent = Intent(
             this@LoginActivity,
             RegisterActivity::class.java

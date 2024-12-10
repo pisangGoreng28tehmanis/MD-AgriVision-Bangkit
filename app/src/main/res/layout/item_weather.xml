@@ -15,7 +15,7 @@
         android:orientation="vertical"
         android:padding="24dp">
 
-        <!-- Kota Sebagai Judul -->
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -93,12 +93,6 @@
                 tools:text="12:00" />
         </LinearLayout>
 
-        <!-- Ikon Cuaca -->
-
-        <!-- Tanggal -->
-
-        <!-- Waktu -->
-
         <TextView
             android:id="@+id/tvCity"
             android:layout_width="wrap_content"
@@ -109,13 +103,6 @@
             android:textStyle="bold"
             android:visibility="gone"
             tools:text="Jakarta, ID" />
-
-        <!-- Suhu -->
-
-        <!-- Deskripsi Cuaca -->
-
-        <!-- Kelembaban -->
-
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

@@ -14,27 +14,20 @@ import com.google.gson.JsonParser
 import kotlinx.coroutines.*
 
 class RegisterActivity : AppCompatActivity() {
-
-    // Declare the view binding object
     private lateinit var binding: ActivityRegisterBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        // Initialize the view binding object
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Now you can safely access the views via the binding object
         val linkToRegister = binding.linkToLogin
         linkToRegister.setOnClickListener {
-            // Logic to navigate to RegisterActivity or perform the intended action
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
             finish()
         }
 
-        // Set onClickListener for the register button using view binding
         binding.btnRegister.setOnClickListener {
             val email = binding.etEmail.text.toString()
             val username = binding.etUsername.text.toString()
@@ -42,7 +35,6 @@ class RegisterActivity : AppCompatActivity() {
             val nickname = binding.etNickname.text.toString()
 
             if (email.isNotEmpty() && username.isNotEmpty() && password.isNotEmpty() && nickname.isNotEmpty()) {
-                // Start a coroutine to handle the registration
                 registerUser(email, username, password, nickname)
             } else {
                 Toast.makeText(this, "Harap isi semua field", Toast.LENGTH_SHORT).show()
@@ -67,8 +59,6 @@ class RegisterActivity : AppCompatActivity() {
                 val response = apiService.registerUser(registerRequest)
 
                 if (response.isSuccessful) {
-//                    Toast.makeText(this@RegisterActivity, "Registrasi berhasil! Silakan verifikasi email Anda.", Toast.LENGTH_SHORT).show()
-
                     val intent = Intent(this@RegisterActivity, VerifyEmailActivity::class.java)
                     intent.putExtra("EXTRA_USERNAME",username)
                     startActivity(intent)

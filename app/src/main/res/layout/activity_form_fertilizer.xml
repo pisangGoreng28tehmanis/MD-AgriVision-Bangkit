@@ -22,6 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:baselineAligned="false"
         android:gravity="center"
         android:layout_marginTop="20dp"
         android:layout_marginStart="20dp"
@@ -49,7 +50,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="@string/labelfosfor"> <!-- Set lebar 50% dari layar -->
+            android:hint="@string/labelfosfor">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/inputTextFosfor"
@@ -67,7 +68,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:gravity="center"
+        android:baselineAligned="false" android:gravity="center"
         android:layout_marginTop="20dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
@@ -79,7 +80,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
             android:layout_weight="1"
-            android:hint="@string/labelkalium"> <!-- Set lebar 50% dari layar -->
+            android:hint="@string/labelkalium">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/inputTextKalium"
@@ -94,7 +95,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="@string/labeltemp"> <!-- Set lebar 50% dari layar -->
+            android:hint="@string/labeltemp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/inputTextTemperature"
@@ -112,15 +113,15 @@
         android:layout_marginTop="20dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:orientation="horizontal">
+        android:baselineAligned="false" android:orientation="horizontal">
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textFieldKelembapan"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
             android:layout_weight="1"
-            android:hint="@string/labelkelembapan"> <!-- Set lebar 50% dari layar -->
+            android:hint="@string/labelkelembapan">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/inputTextKelembapan"
@@ -135,10 +136,11 @@
             style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="@string/select_option"> <!-- Set lebar 80% dari layar -->
+            android:hint="@string/select_option">
 
             <AutoCompleteTextView
                 android:id="@+id/jenisTanah"
+                android:hint="Jenis Tanah"
                 android:layout_width="165dp"
                 android:layout_height="wrap_content"
                 android:inputType="none"
@@ -154,10 +156,11 @@
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:hint="@string/select_plant"
-        app:layout_constraintTop_toTopOf="parent"> <!-- Set lebar 80% dari layar -->
+        app:layout_constraintTop_toTopOf="parent">
 
         <AutoCompleteTextView
             android:id="@+id/dropdownMenuPlantType"
+            android:hint="Jenis Tanaman"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="none"

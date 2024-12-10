@@ -13,7 +13,6 @@
     android:background="@color/agricolor"
     tools:context=".ui.artikel.ArtikelFragment">
 
-    <!-- TextView for Tips & Trick -->
 
 
 
@@ -31,7 +30,6 @@
         android:textColor="@color/agritextwhite"
         android:textSize="24sp"
         android:textStyle="bold"/>
-    <!-- SearchBar positioned below the Tips & Trick text -->
 
     <SearchView
         android:id="@+id/search_bar"
@@ -47,10 +45,6 @@
         app:hintTextColor="@color/md_theme_inverseSurface_highContrast"
         app:navigationIcon="@drawable/ic_search" />
 
-
-
-
-    <!-- RecyclerView positioned below the SearchBar -->
     <ProgressBar
         android:id="@+id/progressBar2"
         style="?android:attr/progressBarStyle"

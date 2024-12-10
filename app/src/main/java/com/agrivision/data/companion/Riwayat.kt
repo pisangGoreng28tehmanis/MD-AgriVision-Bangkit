@@ -9,5 +9,5 @@ data class Riwayat(
     val temperatur: String,
     val kelembapan: String,
     val rekomendasiPupuk: String,
-    val gambarPupuk: Int // Resource ID gambar
+    val gambarPupuk: Int
 )

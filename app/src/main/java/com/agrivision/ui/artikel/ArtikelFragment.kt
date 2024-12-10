@@ -84,12 +84,9 @@ class ArtikelFragment : Fragment() {
         return root
     }
 
-//    private fun getListArticle(): ArrayList<ArticleResponseItem> {
-//
-//    }
 
     private fun loading(isLoading: Boolean) {
-        binding?.let {
+        binding.let {
             if (isLoading != false) {
                 binding.progressBar2.visibility = View.VISIBLE
             } else {
@@ -114,14 +111,6 @@ class ArtikelFragment : Fragment() {
             notifyDataSetChanged()
         }
     }
-
-//    fun showRecyclerList() {
-//        val list = getListArticle()  // Get the list of heroes
-//        rvNews.layoutManager = LinearLayoutManager(context)
-//        val listArticleAdapter = ListArticleAdapter(list)
-//        rvNews.adapter = listArticleAdapter
-//    }
-
 
     override fun onDestroyView() {
         super.onDestroyView()

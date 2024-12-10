@@ -7,7 +7,6 @@
     android:background="@color/agricolor"
     tools:context=".ProfileFragment">
 
-    <!-- Profile Picture -->
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/profileImage"
         android:layout_width="180dp"
@@ -23,7 +22,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full" />
 
-    <!-- Name Text -->
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/fullNameText"
         android:layout_width="wrap_content"
@@ -36,7 +34,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/emailText" />
 
-    <!-- Email Text -->
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/emailText"
         android:layout_width="wrap_content"
@@ -49,7 +46,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/profileImage" />
 
-    <!-- Edit Button -->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/editButton"
         android:layout_width="wrap_content"

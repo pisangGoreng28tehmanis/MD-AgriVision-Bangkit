@@ -44,9 +44,7 @@ class DetailActivity : AppCompatActivity() {
         detailViewModel.isRetry.observe(this){
             retry(it)
         }
-//        detailViewModel.isSuccess.observe(this) {
-//            showItem(it)
-//        }
+
         detailViewModel.isErr.observe(this) {
             Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
         }
@@ -68,10 +66,6 @@ class DetailActivity : AppCompatActivity() {
         binding.tvTitle.text = article.jsonMember4Title
         binding.tvDate.text=article.jsonMember2Date
         binding.tvAuthor.text = article.jsonMember3Author
-
-//        binding.tvBeginTime.text = events.beginTime
-//        binding.tvRegistrant.text = events.registrants.toString()
-//        binding.tvQuota.text = events.quota.toString()
         binding.tvDescription.text= HtmlCompat.fromHtml(
             article.jsonMember6Content,
             HtmlCompat.FROM_HTML_MODE_LEGACY

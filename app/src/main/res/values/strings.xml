@@ -3,13 +3,8 @@
     <string name="title_home">Home</string>
     <string name="title_artikel">Artikel</string>
     <string name="title_riwayat">Riwayat</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <!-- Hint for email input field -->
-    <!--<string name="email_hint">Enter your email</string>-->
-
     <string name="full_name_hint">Full Name</string>
     <string name="email_hint">Email</string>
-    <!--<string name="password_hint">Password</string>-->
     <string name="dob_hint">Date of Birth</string>
     <string name="register">Daftar</string>
     <string name="back_to_login">Back to Login</string>
@@ -27,11 +22,6 @@
     <string name="email_input">Email</string>
     <string name="username_input">Username</string>
     <string name="nickname_input">Nickname</string>
-    <!--<string name="password_input">Password</string>
-    <string name="register">Register</string>
-    <string name="register_link_text">Already have an account? Log in</string>
-    -->
-    <!-- Hint for password input field -->
     <string name="password_hint">Masukkan kata sandi</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="label">Kandungan Nitrogen</string>
@@ -71,7 +61,6 @@
         <item>Jeruk</item>
     </string-array>
 
-    <!-- Fix: Correct placement of these arrays outside of a nested <resources> tag -->
     <string-array name="data_name">
         <item>Harley Quinn</item>
     </string-array>

@@ -57,11 +57,6 @@ class ListArticleAdapter(val listArticle: ArrayList<ArticleResponseItem>) : Recy
                }
             binding.tvItemAuthor.text = articles.jsonMember3Author
             binding.tvItemTitle.text = articles.jsonMember4Title
-//            binding.tvItemDate.text = articles.jsonMember2Date
-//            binding.tvItemDescription.text = HtmlCompat.fromHtml(
-//                articles.jsonMember6Content,
-//                HtmlCompat.FROM_HTML_MODE_LEGACY
-//            )
         }
 
     }

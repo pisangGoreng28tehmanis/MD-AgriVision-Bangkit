@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.detail.DetailActivity">
 
-    <!-- ImageView untuk gambar di atas -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -53,18 +52,18 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="18dp"
                     android:text="TextView"
-                    android:textSize="12dp"
+                    android:textSize="12sp"
                     android:textStyle="italic" />
 
                 <TextView
                     android:id="@+id/tvDate"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="18dp"
                     android:layout_weight="1"
                     android:text="TextView"
-                    android:textSize="10dp"
+                    android:textSize="10sp"
                     android:textStyle="italic" />
             </LinearLayout>
 
@@ -82,14 +81,6 @@
 
         </LinearLayout>
     </ScrollView>
-
-    <!-- Tombol share -->
-
-    <!-- Tombol favourite atau love -->
-
-    <!-- TextView untuk judul -->
-
-    <!-- TextView untuk deskripsi -->
 
     <ProgressBar
         android:id="@+id/progressBar"

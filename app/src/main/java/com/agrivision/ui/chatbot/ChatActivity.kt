@@ -48,8 +48,7 @@ class ChatActivity : AppCompatActivity() {
             try{
             val textChat = binding.inputTextChat.text.toString()
             val requiredData = message(textChat)
-            val response = ApiConfig.getApiService().getChatResponse(requiredData)
-
+                val response = ApiConfig.getApiService().getChatResponse(requiredData)
                 if (response.isSuccessful){
                     binding.tvChatResponse.text = response.body()?.reply?.parts?.firstOrNull()?.text
                 } else {
@@ -59,7 +58,7 @@ class ChatActivity : AppCompatActivity() {
                 }
             } catch (e:Exception){
                 Log.e("err","${e.message}")
-                binding.tvChatResponse.text = "Maaf botnya lagi malas"
+                binding.tvChatResponse.text = "Maaf Agrimin sedang sibuk"
                 Toast.makeText(this@ChatActivity, "Tidak ada koneksi internet", Toast.LENGTH_SHORT).show()
             } finally {
                 binding.progressBar.visibility = View.GONE

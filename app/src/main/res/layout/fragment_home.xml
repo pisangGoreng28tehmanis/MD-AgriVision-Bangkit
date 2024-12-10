@@ -24,27 +24,13 @@
             android:textSize="24sp"
             android:textStyle="bold"
             android:fontFamily="@font/dm_sans"/>
-
-        <TextView
-            android:id="@+id/tv_username"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="5dp"
-            android:text="username"
-            android:textColor="@color/agritextwhite"
-            android:textSize="22sp"
-            android:textStyle="normal"
-            android:fontFamily="@font/dm_sans"/>
-        <!--        nanti ganti jadi android:hint untuk yang username-->
-
     </LinearLayout>
 
     <TextView
         android:id="@+id/tv_cuaca"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginStart="30dp"
         android:text="Prakiraan cuaca"
         android:textStyle="bold"
@@ -144,7 +130,6 @@
             android:orientation="vertical"
             android:visibility="gone">
 
-            <!-- Kota Sebagai Judul -->
             <TextView
                 android:id="@+id/tvCity"
                 android:layout_width="wrap_content"
@@ -182,7 +167,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/agritextblack"
-                        android:textSize="34dp"
+                        android:textSize="34sp"
                         tools:text="30°C" />
 
                     <LinearLayout
@@ -243,6 +228,7 @@
                 android:id="@+id/btn_chat"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
+                android:contentDescription="TODO"
                 android:paddingTop="20dp"
                 android:layout_weight="2"
                 android:background="@color/transparant"
@@ -273,7 +259,7 @@
                 android:id="@+id/btn_pupuk"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:paddingTop="20dp"
+                android:contentDescription="TODO" android:paddingTop="20dp"
                 android:layout_weight="2"
                 android:background="@color/transparant"
                 android:src="@drawable/fertilizer" />
@@ -288,7 +274,6 @@
                 android:fontFamily="@font/dm_sans"
                 android:text="Cek Pupuk"
                 android:textColor="@color/agritextblack" />
-            />
         </LinearLayout>
     </LinearLayout>
 
@@ -301,23 +286,12 @@
             android:id="@+id/tv_trik"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="35dp"
+            android:layout_marginStart="30dp"
             android:layout_marginTop="16dp"
             android:text="Tips &amp; Trik"
             android:textStyle="bold"
             android:textColor="@color/agritextwhite"
             android:textSize="18sp"/>
-<!--        <TextView-->
-<!--            android:id="@+id/tv_more"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="15dp"-->
-<!--            android:layout_marginEnd="30dp"-->
-<!--            android:layout_weight="1"-->
-<!--            android:gravity="right"-->
-<!--            android:text="Lihat Lebih Banyak"-->
-<!--            android:textColor="@color/md_theme_inverseSurface_highContrast"-->
-<!--            android:textSize="13sp"/>-->
     </LinearLayout>
 
 
