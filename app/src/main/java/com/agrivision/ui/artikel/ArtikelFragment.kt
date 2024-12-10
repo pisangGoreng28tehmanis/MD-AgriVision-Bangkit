@@ -1,6 +1,5 @@
 package com.agrivision.ui.artikel
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -12,10 +11,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.agrivision.R
 import com.agrivision.data.remote.response.ArticleResponseItem
 import com.agrivision.databinding.FragmentArtikelBinding
-import com.agrivision.ui.detail.DetailActivity
 
 class ArtikelFragment : Fragment() {
 
@@ -73,9 +70,9 @@ class ArtikelFragment : Fragment() {
             retry(it)
         }
 
-        artikelViewModel.isErr.observe(viewLifecycleOwner){
+        artikelViewModel.isErr.observe(viewLifecycleOwner) {
             if (it == "no error" || it.isNullOrEmpty()) {
-            Log.d("fetch artikel","sukses coy")
+                Log.d("fetch artikel", "sukses coy")
             } else {
                 Toast.makeText(requireActivity(), it, Toast.LENGTH_SHORT).show()
             }
