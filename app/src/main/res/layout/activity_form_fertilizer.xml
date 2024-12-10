@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    tools:context=".ui.fertilizerpredict.FormFertilizerActivity">
+    tools:context=".ui.fertilizerpredict.FormFertilizerActivity"
+    android:background="@color/agrigreen">
 
 
 
@@ -15,8 +16,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:layout_gravity="center"
-        android:text="Tanya Pupuk"
-        android:textSize="18sp" />
+        android:text="Cek Pupuk"
+        android:textSize="24sp"
+        android:textColor="@color/agritextwhite"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -35,7 +37,16 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
             android:layout_weight="1"
-            android:hint="@string/label">
+            android:hint="@string/label"
+            app:boxBackgroundMode="outline"
+            app:boxStrokeWidth="1dp"
+            app:boxStrokeColor="@color/input_stroke_color"
+            android:textColorHint="@color/input_hint_color"
+            app:hintTextColor="@color/input_hint_color"
+            app:boxCornerRadiusTopStart="7dp"
+            app:boxCornerRadiusTopEnd="7dp"
+            app:boxCornerRadiusBottomEnd="7dp"
+            app:boxCornerRadiusBottomStart="7dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/inputTextNitrogen"
@@ -50,7 +61,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="@string/labelfosfor">
+            android:hint="@string/labelfosfor"
+            app:boxBackgroundMode="outline"
+            app:boxStrokeWidth="1dp"
+            app:boxStrokeColor="@color/input_stroke_color"
+            android:textColorHint="@color/input_hint_color"
+            app:hintTextColor="@color/input_hint_color"
+            app:boxCornerRadiusTopStart="7dp"
+            app:boxCornerRadiusTopEnd="7dp"
+            app:boxCornerRadiusBottomEnd="7dp"
+            app:boxCornerRadiusBottomStart="7dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/inputTextFosfor"
@@ -80,7 +100,16 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
             android:layout_weight="1"
-            android:hint="@string/labelkalium">
+            android:hint="@string/labelkalium"
+            app:boxBackgroundMode="outline"
+            app:boxStrokeWidth="1dp"
+            app:boxStrokeColor="@color/input_stroke_color"
+            android:textColorHint="@color/input_hint_color"
+            app:hintTextColor="@color/input_hint_color"
+            app:boxCornerRadiusTopStart="7dp"
+            app:boxCornerRadiusTopEnd="7dp"
+            app:boxCornerRadiusBottomEnd="7dp"
+            app:boxCornerRadiusBottomStart="7dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/inputTextKalium"
@@ -95,7 +124,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="@string/labeltemp">
+            android:hint="@string/labeltemp"
+            app:boxBackgroundMode="outline"
+            app:boxStrokeWidth="1dp"
+            app:boxStrokeColor="@color/input_stroke_color"
+            android:textColorHint="@color/input_hint_color"
+            app:hintTextColor="@color/input_hint_color"
+            app:boxCornerRadiusTopStart="7dp"
+            app:boxCornerRadiusTopEnd="7dp"
+            app:boxCornerRadiusBottomEnd="7dp"
+            app:boxCornerRadiusBottomStart="7dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/inputTextTemperature"
@@ -117,17 +155,26 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textFieldKelembapan"
-            android:layout_width="0dp"
+            android:layout_width="151dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
             android:layout_weight="1"
-            android:hint="@string/labelkelembapan">
+            android:hint="@string/labelkelembapan"
+            android:textColorHint="@color/input_hint_color"
+            app:boxBackgroundMode="outline"
+            app:boxCornerRadiusBottomEnd="7dp"
+            app:boxCornerRadiusBottomStart="7dp"
+            app:boxCornerRadiusTopEnd="7dp"
+            app:boxCornerRadiusTopStart="7dp"
+            app:boxStrokeColor="@color/input_stroke_color"
+            app:boxStrokeWidth="1dp"
+            app:hintTextColor="@color/input_hint_color">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/inputTextKelembapan"
-                android:layout_width="match_parent"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:inputType="number"  />
+                android:inputType="number" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -136,13 +183,22 @@
             style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="@string/select_option">
+
+            app:boxBackgroundMode="outline"
+            app:boxStrokeWidth="1dp"
+            app:boxStrokeColor="@color/input_stroke_color"
+            android:textColorHint="@color/input_hint_color"
+            app:hintTextColor="@color/input_hint_color"
+            app:boxCornerRadiusTopStart="7dp"
+            app:boxCornerRadiusTopEnd="7dp"
+            app:boxCornerRadiusBottomEnd="7dp"
+            app:boxCornerRadiusBottomStart="7dp">
 
             <AutoCompleteTextView
                 android:id="@+id/jenisTanah"
-                android:hint="Jenis Tanah"
-                android:layout_width="165dp"
+                android:layout_width="210dp"
                 android:layout_height="wrap_content"
+                android:hint="Jenis Tanah"
                 android:inputType="none"
                 app:simpleItems="@array/simple_items" />
 
@@ -156,7 +212,16 @@
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:hint="@string/select_plant"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:boxBackgroundMode="outline"
+        app:boxStrokeWidth="1dp"
+        app:boxStrokeColor="@color/input_stroke_color"
+        android:textColorHint="@color/input_hint_color"
+        app:hintTextColor="@color/input_hint_color"
+        app:boxCornerRadiusTopStart="7dp"
+        app:boxCornerRadiusTopEnd="7dp"
+        app:boxCornerRadiusBottomEnd="7dp"
+        app:boxCornerRadiusBottomStart="7dp">
 
         <AutoCompleteTextView
             android:id="@+id/dropdownMenuPlantType"
@@ -174,7 +239,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:text="Proses Data" />
+        android:text="Proses Data"
+        android:background="@drawable/btnshapegreen" />
 
 
 
@@ -210,7 +276,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:visibility="gone"
-            android:indeterminateTint="@color/md_theme_primary_highContrast"/>
+            android:indeterminateTint="@color/white"/>
 
 
     </FrameLayout>

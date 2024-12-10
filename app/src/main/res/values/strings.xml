@@ -24,9 +24,9 @@
     <string name="nickname_input">Nickname</string>
     <string name="password_hint">Masukkan kata sandi</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="label">Kandungan Nitrogen</string>
-    <string name="labelfosfor">Kandungan Fosfor\n</string>
-    <string name="labelkalium">Kandungan Kalium\n</string>
+    <string name="label">Nitrogen</string>
+    <string name="labelfosfor">Fosfor\n</string>
+    <string name="labelkalium">Kalium\n</string>
     <string name="labeltemp">Temperature\n</string>
     <string name="labelkelembapan">Kelembapan</string>
     <string name="labeltanah">Jenis Tanah\n</string>

@@ -155,4 +155,5 @@
     <color name="unselected_color">#FFFFFF</color>
     <color name="transparent">#00FFFFFF</color>
     <color name="btnLogin">#57A773</color>
+    <color name="agrigreen">#0D2F2A</color>
 </resources>
