@@ -58,7 +58,7 @@ class ChatActivity : AppCompatActivity() {
                 }
             } catch (e:Exception){
                 Log.e("err","${e.message}")
-                binding.tvChatResponse.text = "Maaf Agrimin sedang sibuk"
+                binding.tvChatResponse.text = "Maaf Agrimin sedang sibuk."
                 Toast.makeText(this@ChatActivity, "Tidak ada koneksi internet", Toast.LENGTH_SHORT).show()
             } finally {
                 binding.progressBar.visibility = View.GONE
