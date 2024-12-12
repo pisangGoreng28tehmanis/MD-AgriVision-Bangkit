@@ -52,7 +52,8 @@
                 android:id="@+id/inputTextNitrogen"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number" />
+                android:inputType="number"
+                android:textColor="@color/agritextwhite"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -76,7 +77,8 @@
                 android:id="@+id/inputTextFosfor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number" />
+                android:inputType="number"
+                android:textColor="@color/agritextwhite"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -115,7 +117,8 @@
                 android:id="@+id/inputTextKalium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number" />
+                android:inputType="number"
+                android:textColor="@color/agritextwhite"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -139,7 +142,8 @@
                 android:id="@+id/inputTextTemperature"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number" />
+                android:inputType="number"
+                android:textColor="@color/agritextwhite"/>
 
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
@@ -174,7 +178,8 @@
                 android:id="@+id/inputTextKelembapan"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:inputType="number" />
+                android:inputType="number"
+                android:textColor="@color/agritextwhite"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -200,7 +205,8 @@
                 android:layout_height="wrap_content"
                 android:hint="Jenis Tanah"
                 android:inputType="none"
-                app:simpleItems="@array/simple_items" />
+                app:simpleItems="@array/simple_items"
+                android:textColor="@color/agritextwhite"/>
 
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
@@ -229,7 +235,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="none"
-            app:simpleItems="@array/plant_type" />
+            app:simpleItems="@array/plant_type"
+            android:textColor="@color/agritextwhite"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -265,7 +272,8 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="20dp"
                     android:text="Rekomendasi Pupuk:"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    android:textColor="@color/agritextwhite"/>
             </LinearLayout>
         </ScrollView>
 

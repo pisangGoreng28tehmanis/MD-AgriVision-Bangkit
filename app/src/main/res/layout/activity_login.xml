@@ -74,7 +74,9 @@
             android:layout_height="wrap_content"
             android:importantForAccessibility="yes"
             android:inputType="textPassword"
-            android:textSize="16dp"/>
+            android:textSize="16dp"
+            android:foregroundTint="#EBEBEB"
+            android:textColor="@color/agritextwhite"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
