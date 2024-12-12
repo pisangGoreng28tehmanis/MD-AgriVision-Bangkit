@@ -34,6 +34,7 @@
         app:boxStrokeColor="@color/input_stroke_color"
         android:textColorHint="@color/input_hint_color"
         app:hintTextColor="@color/input_hint_color"
+        app:cursorColor="@color/agritextwhite"
         app:boxCornerRadiusTopStart="10dp"
         app:boxCornerRadiusTopEnd="10dp"
         app:boxCornerRadiusBottomEnd="10dp"
@@ -67,7 +68,8 @@
         app:boxCornerRadiusTopStart="10dp"
         app:boxCornerRadiusTopEnd="10dp"
         app:boxCornerRadiusBottomEnd="10dp"
-        app:boxCornerRadiusBottomStart="10dp">
+        app:boxCornerRadiusBottomStart="10dp"
+        app:cursorColor="@color/agritextwhite">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etPassword"
             android:layout_width="match_parent"
@@ -84,9 +86,12 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
+        android:background="@drawable/btnshape"
         android:text="@string/login"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
+        android:textSize="16sp"
         app:layout_constraintTop_toBottomOf="@id/passwordInputLayout" />
 
     <TextView
@@ -98,6 +103,7 @@
         android:focusable="true"
         android:text="@string/register_account"
         android:textColor="@color/agritextwhite"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"

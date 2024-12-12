@@ -33,6 +33,7 @@
         app:boxStrokeColor="@color/input_stroke_color"
         android:textColorHint="@color/input_hint_color"
         app:hintTextColor="@color/input_hint_color"
+        app:cursorColor="@color/agritextwhite"
         app:boxCornerRadiusTopStart="10dp"
         app:boxCornerRadiusTopEnd="10dp"
         app:boxCornerRadiusBottomEnd="10dp"
@@ -64,6 +65,7 @@
         app:boxStrokeColor="@color/input_stroke_color"
         android:textColorHint="@color/input_hint_color"
         app:hintTextColor="@color/input_hint_color"
+        app:cursorColor="@color/agritextwhite"
         app:boxCornerRadiusTopStart="10dp"
         app:boxCornerRadiusTopEnd="10dp"
         app:boxCornerRadiusBottomEnd="10dp"
@@ -95,6 +97,7 @@
         app:boxStrokeColor="@color/input_stroke_color"
         android:textColorHint="@color/input_hint_color"
         app:hintTextColor="@color/input_hint_color"
+        app:cursorColor="@color/agritextwhite"
         app:boxCornerRadiusTopStart="10dp"
         app:boxCornerRadiusTopEnd="10dp"
         app:boxCornerRadiusBottomEnd="10dp"
@@ -106,7 +109,8 @@
             android:layout_height="wrap_content"
             android:hint="@string/nickname_hint"
             android:importantForAccessibility="yes"
-            android:textSize="16dp" />
+            android:textSize="16dp"
+            android:textColor="@color/agritextwhite"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -122,6 +126,7 @@
         app:boxStrokeColor="@color/input_stroke_color"
         android:textColorHint="@color/input_hint_color"
         app:hintTextColor="@color/input_hint_color"
+        app:cursorColor="@color/agritextwhite"
         app:boxCornerRadiusTopStart="10dp"
         app:boxCornerRadiusTopEnd="10dp"
         app:boxCornerRadiusBottomEnd="10dp"

@@ -41,6 +41,7 @@
             app:boxStrokeColor="@color/input_stroke_color"
             android:textColorHint="@color/input_hint_color"
             app:hintTextColor="@color/input_hint_color"
+            app:cursorColor="@color/agritextwhite"
             app:boxCornerRadiusTopStart="7dp"
             app:boxCornerRadiusTopEnd="7dp"
             app:boxCornerRadiusBottomEnd="7dp"
@@ -112,7 +113,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:visibility="gone"
-            android:indeterminateTint="@color/md_theme_primary_highContrast"/>
+            android:indeterminateTint="@color/agritextwhite"/>
 
 
     </FrameLayout>
