@@ -70,7 +70,8 @@
             app:iconGravity="textStart"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fullNameText" />
+            app:layout_constraintTop_toBottomOf="@id/fullNameText"
+            android:textColor="@color/agritextwhite"/>
     </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
