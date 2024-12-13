@@ -46,15 +46,31 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/profileImage" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/editButton"
+    <FrameLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="Log Out"
-        app:iconGravity="textStart"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:layout_weight="0.1"
+        android:background="@drawable/active_indicator_shape_custom"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/fullNameText" />
+        app:layout_constraintTop_toBottomOf="@+id/fullNameText"
+        tools:ignore="MissingConstraints">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/editButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/transparant"
+            android:text="Log Out"
+            app:iconGravity="textStart"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fullNameText" />
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
