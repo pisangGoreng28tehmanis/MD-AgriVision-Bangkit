@@ -25,13 +25,10 @@ import com.agrivision.R
 import com.agrivision.data.local.DataStoreManager
 import com.agrivision.data.remote.response.ArticleResponseItem
 import com.agrivision.databinding.FragmentHomeBinding
-import com.agrivision.databinding.FragmentProfileBinding
-import com.agrivision.ui.artikel.ArtikelFragment
 import com.agrivision.ui.artikel.ArtikelViewModel
 import com.agrivision.ui.fertilizerpredict.FormFertilizerActivity
 import com.agrivision.ui.artikel.ListArticleAdapter
 import com.agrivision.ui.chatbot.ChatActivity
-import com.agrivision.ui.detail.DetailActivity
 import com.agrivision.ui.weather.WeatherActivity
 import com.agrivision.utils.fetchLatestWeatherForecast
 import com.google.android.gms.location.*
