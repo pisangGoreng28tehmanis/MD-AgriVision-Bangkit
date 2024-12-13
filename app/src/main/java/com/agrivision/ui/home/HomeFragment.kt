@@ -253,7 +253,13 @@ class HomeFragment : Fragment() {
 
 
                     } catch (e: Exception) {
-                        Toast.makeText(requireActivity(), "Error: ${e.message}", Toast.LENGTH_SHORT).show()
+                        if (e.message != null) {
+                            Toast.makeText(
+                                requireActivity(),
+                                "Error: ${e.message}",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
                     }
                 }
             }
