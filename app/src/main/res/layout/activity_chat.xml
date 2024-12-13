@@ -6,7 +6,8 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.chatbot.ChatActivity">
+    tools:context=".ui.chatbot.ChatActivity"
+    android:background="@color/agrigreen">
 
     <TextView
         android:id="@+id/tv_title"
@@ -17,7 +18,7 @@
         android:layout_marginEnd="16dp"
         android:layout_gravity="center"
         android:text="Tanyakan!"
-        android:textColor="@color/md_theme_inverseSurface_highContrast"
+        android:textColor="@color/agritextwhite"
         android:textSize="24sp"
         android:textStyle="bold"/>
 
@@ -34,22 +35,48 @@
             android:layout_weight="1"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="10dp"
-            android:hint="Tanyakan">
+            android:hint="Tulis pertanyaan disini"
+            app:boxBackgroundMode="outline"
+            app:boxStrokeWidth="1dp"
+            app:boxStrokeColor="@color/input_stroke_color"
+            android:textColorHint="@color/input_hint_color"
+            app:hintTextColor="@color/input_hint_color"
+            app:cursorColor="@color/agritextwhite"
+            app:boxCornerRadiusTopStart="7dp"
+            app:boxCornerRadiusTopEnd="7dp"
+            app:boxCornerRadiusBottomEnd="7dp"
+            app:boxCornerRadiusBottomStart="7dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/inputTextChat"
-                android:layout_width="match_parent"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:inputType="text" />
+                android:inputType="text"
+                android:textColor="@color/agritextwhite"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <Button
-            android:id="@+id/filledButton"
+        <FrameLayout
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/cuaca_background"
             android:layout_marginEnd="20dp"
-            android:text="Tanya" />
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            android:paddingTop="2px"
+            android:paddingBottom="2px">
+
+            <Button
+                android:id="@+id/filledButton"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/transparant"
+                android:text="Tanya"
+                android:textSize="16sp"
+                android:textColor="@color/agritextblack"
+                />
+        </FrameLayout>
 
     </LinearLayout>
 
@@ -74,7 +101,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="20dp"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    android:textColor="@color/agritextwhite"/>
             </LinearLayout>
         </ScrollView>
 
@@ -85,7 +113,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:visibility="gone"
-            android:indeterminateTint="@color/md_theme_primary_highContrast"/>
+            android:indeterminateTint="@color/agritextwhite"/>
 
 
     </FrameLayout>
